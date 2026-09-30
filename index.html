@@ -18,10 +18,13 @@
         extend: {
           colors: {
             brand: {
-              purple: '#a855f7',
-              violet: '#8a2be2',
-              cyan: '#00f0ff',
-              dark: '#07090e',
+              amber: '#f59e0b',
+              orange: '#ea580c',
+              gold: '#fbbf24',
+              dark: '#12100d',
+              card: '#1c1713',
+              muted: '#a89f91',
+              cream: '#faf5ee',
             }
           }
         }
@@ -29,39 +32,39 @@
     }
   </script>
   
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Custom Warm Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=warm2026">
 </head>
-<body class="bg-brand-dark text-slate-100 min-h-screen relative bg-grid">
+<body class="bg-brand-dark text-stone-100 min-h-screen relative bg-grid selection:bg-amber-500/30 selection:text-amber-200">
 
-  <!-- Ambient Ambient Lighting -->
-  <div class="fixed top-0 left-1/4 w-96 h-96 radial-glow-purple pointer-events-none -z-10 animate-soft-pulse"></div>
-  <div class="fixed top-1/3 right-1/4 w-[32rem] h-[32rem] radial-glow-cyan pointer-events-none -z-10 animate-soft-pulse"></div>
+  <!-- Ambient Warm Ambient Lighting -->
+  <div class="fixed top-0 left-1/4 w-96 h-96 radial-glow-amber pointer-events-none -z-10 animate-soft-pulse"></div>
+  <div class="fixed top-1/3 right-1/4 w-[32rem] h-[32rem] radial-glow-orange pointer-events-none -z-10 animate-soft-pulse"></div>
 
   <!-- Header / Navigation -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-brand-dark/80 backdrop-blur-md">
+  <header class="sticky top-0 z-50 border-b border-amber-500/10 bg-[#12100d]/85 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3 group">
         <span class="text-2xl transition-transform group-hover:scale-110">🌩️</span>
         <div class="flex flex-col">
           <span class="font-bold tracking-tight text-lg text-white">Existential Cloud</span>
-          <span class="text-[10px] tracking-widest uppercase text-purple-400 font-mono">AI Studio</span>
+          <span class="text-[10px] tracking-widest uppercase text-amber-400 font-mono">AI Studio</span>
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#flagship" class="hover:text-purple-400 transition-colors">Flagship</a>
-        <a href="#simulator" class="hover:text-cyan-400 transition-colors">Token Simulator</a>
-        <a href="#ecosystem" class="hover:text-purple-400 transition-colors">Ecosystem (1+3+N)</a>
-        <a href="#research" class="hover:text-cyan-400 transition-colors">Research</a>
-        <a href="#quickstart" class="hover:text-purple-400 transition-colors">Quickstart</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-300">
+        <a href="#flagship" class="hover:text-amber-400 transition-colors">Flagship</a>
+        <a href="#simulator" class="hover:text-amber-400 transition-colors">Token Simulator</a>
+        <a href="#ecosystem" class="hover:text-amber-400 transition-colors">Ecosystem (1+3+N)</a>
+        <a href="#research" class="hover:text-amber-400 transition-colors">Research</a>
+        <a href="#quickstart" class="hover:text-amber-400 transition-colors">Quickstart</a>
       </nav>
 
       <div class="flex items-center gap-4">
         <a href="https://github.com/VanSchulist" target="_blank" rel="noopener noreferrer" 
-           class="flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/40 bg-purple-950/30 text-purple-300 hover:bg-purple-900/50 hover:border-purple-400 text-xs font-mono transition-all">
+           class="flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/40 bg-amber-950/30 text-amber-300 hover:bg-amber-900/50 hover:border-amber-400 text-xs font-mono transition-all">
           <span>GitHub</span>
-          <span class="text-slate-400">@VanSchulist</span>
+          <span class="text-stone-400">@VanSchulist</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
@@ -70,27 +73,27 @@
 
   <!-- Hero Section -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-28">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-300 text-xs font-mono mb-8">
-      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-amber-500/30 bg-amber-950/30 text-amber-300 text-xs font-mono mb-8">
+      <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
       <span>PRODUCTION RELEASE: mcp-mesh v1.0.0 IS LIVE</span>
     </div>
 
     <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight sm:leading-none">
       Engineering the <br>
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-300 to-cyan-400">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200">
         Agentic Substrate.
       </span>
     </h1>
 
-    <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-normal">
+    <p class="mt-6 text-lg sm:text-xl text-stone-300 max-w-2xl mx-auto font-normal">
       Resilient, interconnected open-source systems that eliminate context bloat, token exhaustion, and schema confusion in autonomous AI coding loops.
     </p>
 
     <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-      <a href="#flagship" class="px-7 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-purple-500/25 transition-all transform hover:-translate-y-0.5">
+      <a href="#flagship" class="px-7 py-3 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-stone-950 font-bold shadow-lg shadow-amber-600/25 transition-all transform hover:-translate-y-0.5">
         Explore Flagship: mcp-mesh
       </a>
-      <a href="#simulator" class="px-7 py-3 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-slate-200 font-semibold backdrop-blur-sm transition-all transform hover:-translate-y-0.5">
+      <a href="#simulator" class="px-7 py-3 rounded-xl border border-amber-500/20 bg-stone-900/40 hover:bg-stone-900/70 text-stone-200 font-semibold backdrop-blur-sm transition-all transform hover:-translate-y-0.5">
         Test Token Simulator
       </a>
     </div>
@@ -98,31 +101,31 @@
     <!-- Quick Badges -->
     <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
       <div class="glass-panel p-4 rounded-xl">
-        <div class="text-2xl font-bold text-purple-400 font-mono">85% - 95%</div>
-        <div class="text-xs text-slate-400 mt-1">Turn-0 Token Reduction</div>
+        <div class="text-2xl font-bold text-amber-400 font-mono">85% - 95%</div>
+        <div class="text-xs text-stone-400 mt-1">Turn-0 Token Reduction</div>
       </div>
       <div class="glass-panel p-4 rounded-xl">
-        <div class="text-2xl font-bold text-cyan-400 font-mono">Zero Deps</div>
-        <div class="text-xs text-slate-400 mt-1">Pure Python Standard Lib</div>
+        <div class="text-2xl font-bold text-orange-400 font-mono">Zero Deps</div>
+        <div class="text-xs text-stone-400 mt-1">Pure Python Standard Lib</div>
       </div>
       <div class="glass-panel p-4 rounded-xl">
         <div class="text-2xl font-bold text-emerald-400 font-mono">100%</div>
-        <div class="text-xs text-slate-400 mt-1">Automated Test Pass Rate</div>
+        <div class="text-xs text-stone-400 mt-1">Automated Test Pass Rate</div>
       </div>
       <div class="glass-panel p-4 rounded-xl">
-        <div class="text-2xl font-bold text-fuchsia-400 font-mono">1 + 3 + N</div>
-        <div class="text-xs text-slate-400 mt-1">Interconnected Ecosystem</div>
+        <div class="text-2xl font-bold text-amber-300 font-mono">1 + 3 + N</div>
+        <div class="text-xs text-stone-400 mt-1">Interconnected Ecosystem</div>
       </div>
     </div>
   </section>
 
   <!-- Interactive Token Simulator Section -->
-  <section id="simulator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+  <section id="simulator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-amber-500/10">
     <div class="text-center max-w-3xl mx-auto mb-14">
-      <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest">Interactive Calculator</span>
+      <span class="text-amber-400 font-mono text-xs uppercase tracking-widest">Interactive Calculator</span>
       <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">The Model Context Protocol Token Bleed</h2>
-      <p class="text-slate-400 mt-3 text-sm sm:text-base">
-        Connecting coding agents to 10+ MCP servers injects dozens of heavy JSON schemas at Turn 0, exhausting prompt limits before you type a prompt. Calculate your savings with <code class="text-purple-300">mcp-mesh</code>.
+      <p class="text-stone-400 mt-3 text-sm sm:text-base">
+        Connecting coding agents to 10+ MCP servers injects dozens of heavy JSON schemas at Turn 0, exhausting prompt limits before you type a prompt. Calculate your savings with <code class="text-amber-300 font-mono">mcp-mesh</code>.
       </p>
     </div>
 
@@ -131,36 +134,37 @@
       <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-2xl space-y-6">
         <h3 class="text-lg font-bold text-white flex items-center justify-between">
           <span>Simulator Parameters</span>
-          <span class="text-xs font-mono text-purple-400">Live Engine</span>
+          <span class="text-xs font-mono text-amber-400">Live Engine</span>
         </h3>
 
         <!-- Input 1: Servers -->
         <div>
           <div class="flex justify-between text-sm mb-2">
-            <span class="text-slate-300 font-medium">Connected MCP Servers</span>
-            <span id="val-servers" class="font-mono text-purple-400 font-bold">10</span>
+            <span class="text-stone-300 font-medium">Connected MCP Servers</span>
+            <span id="val-servers" class="font-mono text-amber-400 font-bold">10</span>
           </div>
           <input type="range" id="input-servers" min="1" max="30" value="10" class="w-full">
-          <p class="text-[11px] text-slate-500 mt-1">e.g. GitHub, Postgres, Slack, Filesystem, AWS, Memory...</p>
+          <p class="text-[11px] text-stone-500 mt-1">e.g. GitHub, Postgres, Slack, Filesystem, AWS, Memory...</p>
         </div>
 
         <!-- Input 2: Tools per Server -->
         <div>
           <div class="flex justify-between text-sm mb-2">
-            <span class="text-slate-300 font-medium">Average Tools per Server</span>
-            <span id="val-tools" class="font-mono text-purple-400 font-bold">6</span>
+            <span class="text-stone-300 font-medium">Average Tools per Server</span>
+            <span id="val-tools" class="font-mono text-amber-400 font-bold">6</span>
           </div>
           <input type="range" id="input-tools" min="2" max="25" value="6" class="w-full">
-          <p class="text-[11px] text-slate-500 mt-1">Total aggregated tools in namespace: <span id="out-total-tools" class="text-cyan-400 font-mono">60</span></p>
+          <p class="text-[11px] text-stone-500 mt-1">Total aggregated tools in namespace: <span id="out-total-tools" class="text-amber-300 font-mono">60</span></p>
         </div>
 
         <!-- Input 3: Model Pricing Tier -->
         <div>
-          <label class="block text-sm font-medium text-slate-300 mb-2">Target LLM Model</label>
-          <select id="select-model" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-purple-500 font-mono">
-            <option value="claude-sonnet-55">Claude Sonnet 5.5 ($2.00 / 1M prompt tokens)</option>
+          <label class="block text-sm font-medium text-stone-300 mb-2">Target LLM Model</label>
+          <select id="select-model" class="w-full bg-[#1c1713] border border-amber-500/20 rounded-xl px-4 py-2.5 text-sm text-stone-200 focus:outline-none focus:border-amber-500 font-mono">
             <option value="gpt-6-astra">GPT-6 Astra ($10.00 / 1M prompt tokens)</option>
-            <option value="gpt-6-sol">GPT-6.1 Sol - Agentic Coding ($2.00 / 1M prompt tokens)</option>
+            <option value="claude-55-sonnet" selected>Claude Sonnet 5.5 ($2.00 / 1M prompt tokens)</option>
+            <option value="gpt-6-sol">GPT-6.1 Sol ($2.00 / 1M prompt tokens)</option>
+            <option value="claude-55-opus">Claude Opus 5.5 ($12.00 / 1M prompt tokens)</option>
             <option value="gemini-38-flash">Gemini 3.8 Flash ($0.75 / 1M prompt tokens)</option>
             <option value="deepseek-v41-flash">DeepSeek-V4.1-Flash ($0.15 / 1M prompt tokens)</option>
           </select>
@@ -169,11 +173,11 @@
         <!-- Input 4: Monthly Turns -->
         <div>
           <div class="flex justify-between text-sm mb-2">
-            <span class="text-slate-300 font-medium">Agent Turns per Month</span>
-            <span id="val-turns" class="font-mono text-purple-400 font-bold">5,000</span>
+            <span class="text-stone-300 font-medium">Agent Turns per Month</span>
+            <span id="val-turns" class="font-mono text-amber-400 font-bold">5,000</span>
           </div>
           <input type="range" id="input-turns" min="500" max="30000" step="500" value="5000" class="w-full">
-          <p class="text-[11px] text-slate-500 mt-1">Typical developer active agent sessions</p>
+          <p class="text-[11px] text-stone-500 mt-1">Typical developer active agent sessions</p>
         </div>
       </div>
 
@@ -181,49 +185,49 @@
       <div class="lg:col-span-7 space-y-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <!-- Raw Baseline -->
-          <div class="glass-panel p-6 rounded-2xl border-rose-500/20 bg-rose-950/10">
+          <div class="glass-panel p-6 rounded-2xl border-rose-500/20 bg-rose-950/15">
             <span class="text-xs font-mono uppercase text-rose-400 tracking-wider">Turn-0 Baseline (Raw MCP)</span>
             <div id="out-raw-tokens" class="text-3xl font-extrabold font-mono text-rose-300 mt-2">13,200</div>
             <p class="text-xs text-rose-300/70 mt-1">Tokens burned on prompt turn 0 before user input.</p>
           </div>
 
           <!-- mcp-mesh Overhead -->
-          <div class="glass-panel p-6 rounded-2xl border-cyan-500/20 bg-cyan-950/10">
-            <span class="text-xs font-mono uppercase text-cyan-400 tracking-wider">With mcp-mesh Gateway</span>
-            <div id="out-mesh-tokens" class="text-3xl font-extrabold font-mono text-cyan-300 mt-2">380</div>
-            <p class="text-xs text-cyan-300/70 mt-1">Lightweight meta-tool signatures loaded lazily.</p>
+          <div class="glass-panel p-6 rounded-2xl border-amber-500/20 bg-amber-950/15">
+            <span class="text-xs font-mono uppercase text-amber-400 tracking-wider">With mcp-mesh Gateway</span>
+            <div id="out-mesh-tokens" class="text-3xl font-extrabold font-mono text-amber-300 mt-2">380</div>
+            <p class="text-xs text-amber-300/70 mt-1">Lightweight meta-tool signatures loaded lazily.</p>
           </div>
         </div>
 
         <!-- Big Economy Highlight Banner -->
-        <div class="glass-panel p-8 rounded-2xl border-purple-500/30 bg-purple-950/20 relative overflow-hidden">
+        <div class="glass-panel p-8 rounded-2xl border-amber-500/30 bg-gradient-to-r from-amber-950/40 via-orange-950/30 to-stone-900/60 relative overflow-hidden">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div>
-              <span class="text-xs font-mono uppercase text-purple-300 tracking-widest">Efficiency Improvement</span>
+              <span class="text-xs font-mono uppercase text-amber-300 tracking-widest">Efficiency Improvement</span>
               <div class="flex items-baseline gap-3 mt-1">
                 <span id="out-saved-pct" class="text-5xl font-black font-mono text-white">97.1%</span>
-                <span class="text-sm text-purple-200">Token Reduction</span>
+                <span class="text-sm text-amber-200">Token Reduction</span>
               </div>
-              <p class="text-xs text-slate-400 mt-2">
-                Net tokens saved per turn: <span id="out-saved-tokens" class="font-mono text-purple-300 font-bold">12,820</span> tokens
+              <p class="text-xs text-stone-400 mt-2">
+                Net tokens saved per turn: <span id="out-saved-tokens" class="font-mono text-amber-300 font-bold">12,820</span> tokens
               </p>
             </div>
 
-            <div class="sm:text-right border-t sm:border-t-0 sm:border-l border-white/10 pt-4 sm:pt-0 sm:pl-8">
-              <span class="text-xs font-mono uppercase text-slate-400 tracking-wider">Estimated Monthly Savings</span>
-              <div id="out-monthly-cost" class="text-4xl font-extrabold font-mono text-emerald-400 mt-1">$192.30</div>
-              <p class="text-[11px] text-slate-400 mt-1">Direct API billing dollars saved</p>
+            <div class="sm:text-right border-t sm:border-t-0 sm:border-l border-amber-500/20 pt-4 sm:pt-0 sm:pl-8">
+              <span class="text-xs font-mono uppercase text-stone-400 tracking-wider">Estimated Monthly Savings</span>
+              <div id="out-monthly-cost" class="text-4xl font-extrabold font-mono text-emerald-400 mt-1">$128.20</div>
+              <p class="text-[11px] text-stone-400 mt-1">Direct API billing dollars saved</p>
             </div>
           </div>
         </div>
 
         <!-- CLI Quick Launch Bar -->
         <div class="glass-panel p-4 rounded-xl flex items-center justify-between gap-4 font-mono text-xs">
-          <div class="flex items-center gap-2 overflow-x-auto text-slate-300">
-            <span class="text-purple-400">$</span>
+          <div class="flex items-center gap-2 overflow-x-auto text-stone-300">
+            <span class="text-amber-400">$</span>
             <span id="cli-clone-text">git clone https://github.com/VanSchulist/mcp-mesh.git</span>
           </div>
-          <button class="copy-btn px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 transition-colors shrink-0" 
+          <button class="copy-btn px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors shrink-0" 
                   data-copy-target="cli-clone-text">
             Copy
           </button>
@@ -233,27 +237,27 @@
   </section>
 
   <!-- Flagship Section: mcp-mesh -->
-  <section id="flagship" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+  <section id="flagship" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-amber-500/10">
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-12">
       <div class="lg:w-1/2 space-y-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-950/40 text-purple-300 text-xs font-mono">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-950/40 text-amber-300 text-xs font-mono">
           <span>FLAGSHIP PROJECT</span>
         </div>
         <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           mcp-mesh: The Dynamic MCP Gateway
         </h2>
-        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+        <p class="text-stone-300 text-base sm:text-lg leading-relaxed">
           The official open-source gateway for Claude Desktop, Cursor, Antigravity, and Cline. It transparently aggregates dozens of upstream MCP servers while indexing tools with BM25 keyword matching and serving full JSON schemas lazily on demand.
         </p>
 
-        <ul class="space-y-3 text-sm text-slate-300">
+        <ul class="space-y-3 text-sm text-stone-300">
           <li class="flex items-center gap-3">
             <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
             <span><strong>Zero External Dependencies:</strong> 100% Python standard library. No pip install headaches.</span>
           </li>
           <li class="flex items-center gap-3">
             <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span><strong>Two-Tier Lazy Routing:</strong> Exposes <code class="text-purple-300 font-mono">mesh_search_tools</code> and <code class="text-purple-300 font-mono">mesh_invoke_tool</code>.</span>
+            <span><strong>Two-Tier Lazy Routing:</strong> Exposes <code class="text-amber-300 font-mono">mesh_search_tools</code> and <code class="text-amber-300 font-mono">mesh_invoke_tool</code>.</span>
           </li>
           <li class="flex items-center gap-3">
             <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -263,10 +267,10 @@
 
         <div class="flex items-center gap-4 pt-4">
           <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" rel="noopener noreferrer"
-             class="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-medium text-sm transition-all shadow-md shadow-purple-600/30">
+             class="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold text-sm transition-all shadow-md shadow-amber-600/30">
             View on GitHub
           </a>
-          <a href="#quickstart" class="px-6 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-slate-300 font-medium text-sm transition-all">
+          <a href="#quickstart" class="px-6 py-2.5 rounded-xl border border-amber-500/20 hover:bg-stone-900/60 text-stone-300 font-medium text-sm transition-all">
             Setup Guide
           </a>
         </div>
@@ -274,11 +278,11 @@
 
       <!-- Architecture ASCII / Visual Box -->
       <div class="lg:w-1/2 glass-panel p-6 sm:p-8 rounded-2xl">
-        <div class="text-xs font-mono text-slate-400 mb-4 flex items-center justify-between">
+        <div class="text-xs font-mono text-stone-400 mb-4 flex items-center justify-between">
           <span>ARCHITECTURE DIAGRAM</span>
           <span class="text-emerald-400">● LIVE RUNTIME</span>
         </div>
-        <pre class="font-mono text-xs sm:text-[13px] text-purple-200/90 leading-relaxed overflow-x-auto bg-slate-950/80 p-4 rounded-xl border border-white/5">
+        <pre class="font-mono text-xs sm:text-[13px] text-amber-200/90 leading-relaxed overflow-x-auto bg-[#14100c] p-4 rounded-xl border border-amber-500/10">
  ┌────────────────────────────────────────────────────────┐
  │                    AI Client / IDE                     │
  │          (Claude Desktop, Cursor, Antigravity)         │
@@ -313,51 +317,51 @@
   </section>
 
   <!-- Ecosystem Showcase (1 + 3 + N) -->
-  <section id="ecosystem" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+  <section id="ecosystem" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-amber-500/10">
     <div class="text-center max-w-3xl mx-auto mb-14">
-      <span class="text-purple-400 font-mono text-xs uppercase tracking-widest">Portfolio Matrix</span>
+      <span class="text-amber-400 font-mono text-xs uppercase tracking-widest">Portfolio Matrix</span>
       <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">The 1 + 3 + N Studio Ecosystem</h2>
-      <p class="text-slate-400 mt-3 text-sm sm:text-base">
+      <p class="text-stone-400 mt-3 text-sm sm:text-base">
         We reject disposable demo apps and repo-farming. Every studio repository maintains an explicit purpose and technical relationship.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Project 1: mcp-mesh -->
-      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-purple-500/30">
+      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-amber-500/30">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-purple-950 text-purple-300 border border-purple-800">FLAGSHIP</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800">FLAGSHIP</span>
             <span class="text-xs font-mono text-emerald-400">v1.1.0</span>
           </div>
           <h3 class="text-xl font-bold text-white">mcp-mesh</h3>
-          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
-            The Dynamic Model Context Protocol Gateway &amp; Lazy Tool Router. Features <code class="text-purple-300 font-mono">mcp-mesh doctor</code> diagnostics, SSE remote transport, and dynamic LRU schema cache.
+          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
+            The Dynamic Model Context Protocol Gateway &amp; Lazy Tool Router. Features <code class="text-amber-300 font-mono">mcp-mesh doctor</code> diagnostics, SSE remote transport, and dynamic LRU schema cache.
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-slate-500">Python • Zero-Deps • SSE</span>
-          <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" class="text-xs font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1">
+          <span class="text-xs font-mono text-stone-500">Python • Zero-Deps • SSE</span>
+          <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
       </div>
 
       <!-- Project 2: mcp-mesh-eval -->
-      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-cyan-500/30">
+      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-orange-500/30">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-800">SATELLITE 1</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-orange-950 text-orange-300 border border-orange-800">SATELLITE 1</span>
             <span class="text-xs font-mono text-emerald-400">v1.0.0</span>
           </div>
           <h3 class="text-xl font-bold text-white">mcp-mesh-eval</h3>
-          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
             Empirical benchmark suite measuring tool selection accuracy, TTFT latency, and token cost across 60 enterprise tools on frontier models (GPT-6 Astra, Claude 5.5 Sonnet, Gemini 3.8 Flash, DeepSeek-V4.1-Flash).
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-slate-500">Benchmark • 60 Tools • Evals</span>
-          <a href="https://github.com/VanSchulist/mcp-mesh-eval" target="_blank" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+          <span class="text-xs font-mono text-stone-500">Benchmark • 60 Tools • Evals</span>
+          <a href="https://github.com/VanSchulist/mcp-mesh-eval" target="_blank" class="text-xs font-mono text-orange-400 hover:text-orange-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
@@ -367,17 +371,17 @@
       <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-900 text-slate-300 border border-slate-700">GOVERNANCE</span>
-            <span class="text-xs font-mono text-slate-400">ACTIVE</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-stone-900 text-stone-300 border border-stone-700">GOVERNANCE</span>
+            <span class="text-xs font-mono text-stone-400">ACTIVE</span>
           </div>
           <h3 class="text-xl font-bold text-white">github-ai-studio</h3>
-          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
             Central engineering lab nervous system, Architecture Decision Records (ADR-001 to ADR-005), 8-phase roadmap, and agent constitution.
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-slate-500">Governance • Specs</span>
-          <a href="https://github.com/VanSchulist/github-ai-studio" target="_blank" class="text-xs font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1">
+          <span class="text-xs font-mono text-stone-500">Governance • Specs</span>
+          <a href="https://github.com/VanSchulist/github-ai-studio" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
@@ -387,17 +391,17 @@
       <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-800">TACTICAL CLI</span>
-            <span class="text-xs font-mono text-slate-400">v1.0.0</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950/60 text-amber-300 border border-amber-800/60">TACTICAL CLI</span>
+            <span class="text-xs font-mono text-stone-400">v1.0.0</span>
           </div>
           <h3 class="text-xl font-bold text-white">ghost-job-hunter</h3>
-          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
             Open-source heuristic engine &amp; CLI analyzing job postings for corporate hiring theater, evergreen pipeline disclosures, and pay transparency evasion.
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-slate-500">Python • Heuristics</span>
-          <a href="https://github.com/VanSchulist/ghost-job-hunter" target="_blank" class="text-xs font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1">
+          <span class="text-xs font-mono text-stone-500">Python • Heuristics</span>
+          <a href="https://github.com/VanSchulist/ghost-job-hunter" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
@@ -407,63 +411,63 @@
       <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-900 text-slate-300 border border-slate-700">TACTICAL MANUAL</span>
-            <span class="text-xs font-mono text-slate-400">PRODUCTION</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-stone-900 text-stone-300 border border-stone-700">TACTICAL MANUAL</span>
+            <span class="text-xs font-mono text-stone-400">PRODUCTION</span>
           </div>
           <h3 class="text-xl font-bold text-white">career-reboot-armor</h3>
-          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
             Publication-grade 50-page field manual and automated Python Word generator for career re-entry after medical, family, or caregiver leave.
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-slate-500">Docx • Python</span>
-          <a href="https://github.com/VanSchulist/career-reboot-armor" target="_blank" class="text-xs font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1">
+          <span class="text-xs font-mono text-stone-500">Docx • Python</span>
+          <a href="https://github.com/VanSchulist/career-reboot-armor" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
       </div>
 
       <!-- Satellites Pipeline (Satellite 2 & 3) -->
-      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-dashed border-white/20">
+      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-dashed border-amber-500/20">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-950 text-indigo-300 border border-indigo-800">PLANNED SATELLITES</span>
-            <span class="text-xs font-mono text-slate-400">PHASE 2 &amp; 3</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-stone-900 text-amber-300 border border-amber-800">PLANNED SATELLITES</span>
+            <span class="text-xs font-mono text-stone-400">PHASE 2 &amp; 3</span>
           </div>
           <h3 class="text-xl font-bold text-white">Upcoming Companions</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
-            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
-              <span class="font-bold text-xs text-cyan-300 font-mono">mcp-mesh-ui</span>
-              <p class="text-[11px] text-slate-400 mt-1">Terminal ANSI dashboard &amp; local web visualization for real-time MCP call traffic.</p>
+            <div class="bg-black/30 p-3 rounded-xl border border-amber-500/10">
+              <span class="font-bold text-xs text-amber-300 font-mono">mcp-mesh-ui</span>
+              <p class="text-[11px] text-stone-400 mt-1">Terminal ANSI dashboard &amp; local web visualization for real-time MCP call traffic.</p>
             </div>
-            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
-              <span class="font-bold text-xs text-emerald-300 font-mono">mcp-registry-cli</span>
-              <p class="text-[11px] text-slate-400 mt-1">Zero-config package manager discovering and auto-installing community MCP servers.</p>
+            <div class="bg-black/30 p-3 rounded-xl border border-amber-500/10">
+              <span class="font-bold text-xs text-orange-300 font-mono">mcp-registry-cli</span>
+              <p class="text-[11px] text-stone-400 mt-1">Zero-config package manager discovering and auto-installing community MCP servers.</p>
             </div>
           </div>
         </div>
-        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-slate-500 font-mono">
-          Governed via <a href="https://github.com/VanSchulist/github-ai-studio/blob/main/ROADMAP.md" target="_blank" class="text-purple-400 underline">ROADMAP.md</a>
+        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-stone-500 font-mono">
+          Governed via <a href="https://github.com/VanSchulist/github-ai-studio/blob/main/ROADMAP.md" target="_blank" class="text-amber-400 underline">ROADMAP.md</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Research & Benchmark Section -->
-  <section id="research" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
-    <div class="glass-panel p-8 sm:p-10 rounded-3xl border-purple-500/20 bg-gradient-to-br from-purple-950/20 to-slate-900/40">
+  <section id="research" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-amber-500/10">
+    <div class="glass-panel p-8 sm:p-10 rounded-3xl border-amber-500/20 bg-gradient-to-br from-amber-950/20 via-orange-950/15 to-stone-900/40">
       <div class="flex flex-col lg:flex-row justify-between gap-8">
         <div class="lg:w-2/3 space-y-4">
-          <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-purple-900/60 text-purple-300 border border-purple-700/50">
+          <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-900/60 text-amber-300 border border-amber-700/50">
             EMPIRICAL BENCHMARK SUITE
           </span>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
             Frontier Tool-Calling Latency &amp; Precision Under Schema Bloat (mcp-mesh-eval)
           </h2>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Does model accuracy drop when exposed to 60+ tool schemas simultaneously? Our empirical benchmark suite evaluates Turn-0 static schema dumping against <code class="text-purple-300 font-mono">mcp-mesh</code> dynamic lazy routing across September 2026 models (GPT-6 Astra, Claude Sonnet 5.5, Gemini 3.8 Flash, DeepSeek-V4.1-Flash), proving a <strong>96.1% token cut</strong> and <strong>~65% TTFT latency acceleration</strong>.
+          <p class="text-stone-300 text-sm sm:text-base leading-relaxed">
+            Does model accuracy drop when exposed to 60+ tool schemas simultaneously? Our empirical benchmark suite evaluates Turn-0 static schema dumping against <code class="text-amber-300 font-mono">mcp-mesh</code> dynamic lazy routing across September 2026 models (GPT-6 Astra, Claude Sonnet 5.5, Gemini 3.8 Flash, DeepSeek-V4.1-Flash), proving a <strong>96.1% token cut</strong> and <strong>~65% TTFT latency acceleration</strong>.
           </p>
-          <div class="flex flex-wrap items-center gap-6 pt-2 font-mono text-xs text-slate-400">
+          <div class="flex flex-wrap items-center gap-6 pt-2 font-mono text-xs text-stone-400">
             <span>● 60 Enterprise Tools</span>
             <span>● 50 Intent Evaluations</span>
             <span>● 96.1% Token Reduction</span>
@@ -472,7 +476,7 @@
         </div>
         <div class="lg:w-1/3 flex flex-col justify-center items-start lg:items-end">
           <a href="https://github.com/VanSchulist/mcp-mesh-eval" target="_blank" 
-             class="px-6 py-3 rounded-xl border border-purple-500/40 bg-purple-950/40 hover:bg-purple-900/60 text-purple-300 font-mono text-xs transition-all">
+             class="px-6 py-3 rounded-xl border border-amber-500/40 bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 font-mono text-xs transition-all">
             Inspect Benchmark Repo &amp; Data →
           </a>
         </div>
@@ -481,62 +485,205 @@
   </section>
 
   <!-- Quickstart & Config Integration -->
-  <section id="quickstart" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+  <section id="quickstart" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-amber-500/10">
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest">Installation & Setup</span>
+      <span class="text-amber-400 font-mono text-xs uppercase tracking-widest">Installation & Setup</span>
       <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Zero-Config IDE Integration</h2>
-      <p class="text-slate-400 mt-2 text-sm">
-        Connect <code class="text-purple-300">mcp-mesh</code> to Claude Desktop or Cursor in under 3 minutes.
+      <p class="text-stone-400 mt-2 text-sm">
+        Connect <code class="text-amber-300">mcp-mesh</code> to Claude Desktop or Cursor in under 3 minutes.
       </p>
     </div>
 
-    <div class="max-w-4xl mx-auto glass-panel rounded-2xl overflow-hidden">
+    <div class="max-w-4xl mx-auto glass-panel rounded-2xl overflow-hidden border-amber-500/20">
       <!-- Tabs -->
-      <div class="flex border-b border-white/10 bg-slate-950/50">
-        <button class="code-tab-btn px-6 py-3 text-xs font-mono font-medium border-b-2 border-purple-500 text-purple-400 bg-purple-950/40 transition-colors" data-tab="claude">
+      <div class="flex border-b border-white/10 bg-[#12100d]/80">
+        <button class="code-tab-btn px-6 py-3 text-xs font-mono font-medium border-b-2 border-amber-500 text-amber-400 bg-amber-950/40 transition-colors" data-tab="claude">
           Claude Desktop
         </button>
-        <button class="code-tab-btn px-6 py-3 text-xs font-mono font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors" data-tab="cursor">
+        <button class="code-tab-btn px-6 py-3 text-xs font-mono font-medium border-b-2 border-transparent text-stone-400 hover:text-stone-200 transition-colors" data-tab="cursor">
           Cursor IDE
         </button>
-        <button class="code-tab-btn px-6 py-3 text-xs font-mono font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors" data-tab="cli">
+        <button class="code-tab-btn px-6 py-3 text-xs font-mono font-medium border-b-2 border-transparent text-stone-400 hover:text-stone-200 transition-colors" data-tab="cli">
           Standalone CLI
         </button>
       </div>
 
       <!-- Code Box -->
-      <div class="p-6 relative bg-slate-950">
-        <button class="copy-btn absolute top-6 right-6 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 text-xs font-mono transition-colors" 
+      <div class="p-6 relative bg-[#14100c]">
+        <button class="copy-btn absolute top-6 right-6 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-300 text-xs font-mono transition-colors" 
                 data-copy-target="code-display">
           Copy Config
         </button>
-        <pre id="code-display" class="font-mono text-xs sm:text-sm text-purple-200/90 leading-relaxed overflow-x-auto"></pre>
+        <pre id="code-display" class="font-mono text-xs sm:text-sm text-amber-200/90 leading-relaxed overflow-x-auto"></pre>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-white/10 bg-slate-950/80 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+  <footer class="border-t border-amber-500/10 bg-[#100e0b] py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-stone-400">
       <div class="flex items-center gap-3">
         <span class="text-xl">🌩️</span>
         <div>
           <div class="font-bold text-white text-sm">Existential Cloud</div>
-          <div>Autonomous AI Engineering Lab • Founded by <a href="https://github.com/VanSchulist" target="_blank" class="text-purple-400 hover:underline">Van Schulist</a></div>
+          <div>Autonomous AI Engineering Lab • Founded by <a href="https://github.com/VanSchulist" target="_blank" class="text-amber-400 hover:underline">Van Schulist</a></div>
         </div>
       </div>
 
-      <div class="flex items-center gap-6 font-mono text-slate-400">
-        <a href="https://github.com/VanSchulist" target="_blank" class="hover:text-purple-300">GitHub</a>
-        <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" class="hover:text-purple-300">mcp-mesh</a>
-        <a href="https://github.com/VanSchulist/github-ai-studio" target="_blank" class="hover:text-purple-300">Studio Specs</a>
-        <span class="text-slate-600">|</span>
+      <div class="flex items-center gap-6 font-mono text-stone-400">
+        <a href="https://github.com/VanSchulist" target="_blank" class="hover:text-amber-300">GitHub</a>
+        <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" class="hover:text-amber-300">mcp-mesh</a>
+        <a href="https://github.com/VanSchulist/github-ai-studio" target="_blank" class="hover:text-amber-300">Studio Specs</a>
+        <span class="text-stone-600">|</span>
         <span>MIT License</span>
       </div>
     </div>
   </footer>
 
-  <!-- App Script -->
-  <script src="app.js"></script>
+  <!-- App Script & Inlined Simulator Logic for Instant Execution -->
+  <script>
+    // Frontier September 2026 Model Catalog & Pricing (Per 1M Input Tokens)
+    const MODEL_PRICING = {
+      "gpt-6-astra": { name: "GPT-6 Astra", costPerM: 10.00 },
+      "claude-55-sonnet": { name: "Claude Sonnet 5.5", costPerM: 2.00 },
+      "gpt-6-sol": { name: "GPT-6.1 Sol", costPerM: 2.00 },
+      "claude-55-opus": { name: "Claude Opus 5.5", costPerM: 12.00 },
+      "gemini-38-flash": { name: "Gemini 3.8 Flash", costPerM: 0.75 },
+      "deepseek-v41-flash": { name: "DeepSeek-V4.1-Flash", costPerM: 0.15 }
+    };
+
+    const CONFIG_SNIPPETS = {
+      claude: `{\n  "mcpServers": {\n    "mcp-mesh": {\n      "command": "python",\n      "args": ["-m", "mcp_mesh.cli", "run", "--config", "mcp_mesh.json"]\n    }\n  }\n}`,
+      cursor: `{\n  "mcpServers": {\n    "mcp-mesh": {\n      "command": "mcp-mesh",\n      "args": ["run", "--config", "\${workspaceFolder}/.mcp-mesh.json"]\n    }\n  }\n}`,
+      cli: `# 1. Clone repository\ngit clone https://github.com/VanSchulist/mcp-mesh.git\ncd mcp-mesh\n\n# 2. Run instant demonstration with 5 enterprise mock servers\npython main.py demo\n\n# 3. View live token savings report\npython main.py stats`
+    };
+
+    function runSimulator() {
+      const serversInput = document.getElementById("input-servers");
+      const toolsInput = document.getElementById("input-tools");
+      const modelSelect = document.getElementById("select-model");
+      const turnsInput = document.getElementById("input-turns");
+
+      const valServers = document.getElementById("val-servers");
+      const valTools = document.getElementById("val-tools");
+      const valTurns = document.getElementById("val-turns");
+
+      const outRawTokens = document.getElementById("out-raw-tokens");
+      const outMeshTokens = document.getElementById("out-mesh-tokens");
+      const outSavedTokens = document.getElementById("out-saved-tokens");
+      const outSavedPct = document.getElementById("out-saved-pct");
+      const outMonthlyCost = document.getElementById("out-monthly-cost");
+      const outTotalTools = document.getElementById("out-total-tools");
+
+      if (!serversInput || !toolsInput || !modelSelect || !turnsInput) return;
+
+      function update() {
+        const servers = parseInt(serversInput.value, 10) || 10;
+        const toolsPerServer = parseInt(toolsInput.value, 10) || 6;
+        const monthlyTurns = parseInt(turnsInput.value, 10) || 5000;
+        const modelKey = modelSelect.value;
+        const model = MODEL_PRICING[modelKey] || Object.values(MODEL_PRICING)[0];
+
+        if (valServers) valServers.textContent = servers;
+        if (valTools) valTools.textContent = toolsPerServer;
+        if (valTurns) valTurns.textContent = monthlyTurns.toLocaleString();
+
+        const totalTools = servers * toolsPerServer;
+        if (outTotalTools) outTotalTools.textContent = totalTools;
+
+        // Turn-0 token footprint: ~220 tokens per tool schema
+        const rawTokens = totalTools * 220;
+        // mcp-mesh gateway meta-tool overhead is static ~380 tokens
+        const meshTokens = 380;
+        const savedPerTurn = Math.max(0, rawTokens - meshTokens);
+        const pct = rawTokens > 0 ? ((savedPerTurn / rawTokens) * 100).toFixed(1) : 0;
+
+        // Estimated monthly savings
+        const monthlyTokensSaved = savedPerTurn * monthlyTurns;
+        const dollarSaved = ((monthlyTokensSaved / 1000000) * model.costPerM).toFixed(2);
+
+        if (outRawTokens) outRawTokens.textContent = rawTokens.toLocaleString();
+        if (outMeshTokens) outMeshTokens.textContent = meshTokens.toLocaleString();
+        if (outSavedTokens) outSavedTokens.textContent = savedPerTurn.toLocaleString();
+        if (outSavedPct) outSavedPct.textContent = `${pct}%`;
+        if (outMonthlyCost) outMonthlyCost.textContent = `$${dollarSaved}`;
+      }
+
+      ['input', 'change'].forEach(ev => {
+        serversInput.addEventListener(ev, update);
+        toolsInput.addEventListener(ev, update);
+        turnsInput.addEventListener(ev, update);
+        modelSelect.addEventListener(ev, update);
+      });
+
+      update();
+    }
+
+    function runTabs() {
+      const tabs = document.querySelectorAll(".code-tab-btn");
+      const codeBlock = document.getElementById("code-display");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => {
+            t.classList.remove("border-amber-500", "text-amber-400", "bg-amber-950/40");
+            t.classList.add("border-transparent", "text-stone-400");
+          });
+
+          tab.classList.add("border-amber-500", "text-amber-400", "bg-amber-950/40");
+          tab.classList.remove("border-transparent", "text-stone-400");
+
+          const target = tab.getAttribute("data-tab");
+          if (CONFIG_SNIPPETS[target] && codeBlock) {
+            codeBlock.textContent = CONFIG_SNIPPETS[target];
+          }
+        });
+      });
+
+      if (codeBlock && CONFIG_SNIPPETS["claude"]) {
+        codeBlock.textContent = CONFIG_SNIPPETS["claude"];
+      }
+    }
+
+    function runCopy() {
+      const copyBtns = document.querySelectorAll(".copy-btn");
+      copyBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-copy-target");
+          let textToCopy = "";
+
+          if (targetId) {
+            const targetEl = document.getElementById(targetId);
+            textToCopy = targetEl ? targetEl.textContent : "";
+          } else {
+            textToCopy = btn.getAttribute("data-copy-text") || "";
+          }
+
+          if (textToCopy) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              const originalHTML = btn.innerHTML;
+              btn.innerHTML = `<span class="text-emerald-400 font-mono text-xs">Copied!</span>`;
+              setTimeout(() => {
+                btn.innerHTML = originalHTML;
+              }, 2000);
+            });
+          }
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      runSimulator();
+      runTabs();
+      runCopy();
+    });
+    // Fallback trigger if DOMContentLoaded has already fired
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      runSimulator();
+      runTabs();
+      runCopy();
+    }
+  </script>
+  <script src="app.js?v=warm2026"></script>
 </body>
 </html>

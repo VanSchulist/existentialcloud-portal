@@ -3,7 +3,7 @@
 > **The official public developer portal and interactive showcase for Existential Cloud AI Studio.**  
 > Built by Van Schulist (@VanSchulist). Hosted on Cloudflare Pages.
 
-[![Website](https://img.shields.io/badge/Website-www.existentialcloud.ccwu.cc-8A2BE2?style=flat-square)](https://www.existentialcloud.ccwu.cc)
+[![Website](https://img.shields.io/badge/Website-www.existentialcloud.ccwu.cc-f59e0b?style=flat-square)](https://www.existentialcloud.ccwu.cc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Hosted: Cloudflare Pages](https://img.shields.io/badge/Hosted-Cloudflare%20Pages-orange?style=flat-square)](https://pages.cloudflare.com/)
 
@@ -17,7 +17,7 @@ This repository hosts the static frontend and interactive demonstration suite fo
 1. **Interactive MCP Token Savings Simulator**:
    * Real-time dynamic calculator quantifying Turn-0 prompt token exhaustion across 1 to 30 connected MCP servers.
    * Compares static raw schema injection against `mcp-mesh` lazy two-tier meta-tool routing.
-   * Computes exact monthly API billing savings across Claude 3.7 Sonnet, Gemini 2.0 Flash, and GPT-4o.
+   * Computes exact monthly API billing savings across September 2026 frontier models (GPT-6 Astra, Claude Sonnet 5.5, Gemini 3.8 Flash, DeepSeek-V4.1-Flash).
 2. **1 + 3 + N Ecosystem Navigation**:
    * Direct deep links to [`mcp-mesh`](https://github.com/VanSchulist/mcp-mesh) (Flagship), [`github-ai-studio`](https://github.com/VanSchulist/github-ai-studio) (Governance), [`ghost-job-hunter`](https://github.com/VanSchulist/ghost-job-hunter), and [`career-reboot-armor`](https://github.com/VanSchulist/career-reboot-armor).
 3. **Interactive Configuration Switcher**:
