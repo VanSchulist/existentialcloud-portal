@@ -1,5 +1,5 @@
 /**
- * Existential Cloud Official Portal (existentialcloud.ccwu.cc)
+ * Existential Cloud Official Portal (www.existentialcloud.ccwu.cc)
  * Core interactive controller: Token savings simulator, tab switcher, GitHub API loader.
  */
 

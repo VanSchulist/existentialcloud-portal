@@ -3,7 +3,7 @@
 > **The official public developer portal and interactive showcase for Existential Cloud AI Studio.**  
 > Built by Van Schulist (@VanSchulist). Hosted on Cloudflare Pages.
 
-[![Website](https://img.shields.io/badge/Website-existentialcloud.ccwu.cc-8A2BE2?style=flat-square)](https://existentialcloud.ccwu.cc)
+[![Website](https://img.shields.io/badge/Website-www.existentialcloud.ccwu.cc-8A2BE2?style=flat-square)](https://www.existentialcloud.ccwu.cc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Hosted: Cloudflare Pages](https://img.shields.io/badge/Hosted-Cloudflare%20Pages-orange?style=flat-square)](https://pages.cloudflare.com/)
 
@@ -65,4 +65,4 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for complete det
 
 ---
 
-**Crafted with 🖤 by [Van Schulist](https://github.com/VanSchulist) | [Existential Cloud](https://existentialcloud.ccwu.cc)**
+**Crafted with 🖤 by [Van Schulist](https://github.com/VanSchulist) | [Existential Cloud](https://www.existentialcloud.ccwu.cc)**
