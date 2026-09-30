@@ -3,12 +3,13 @@
  * Core interactive controller: Token savings simulator, tab switcher, GitHub API loader.
  */
 
-// Model Pricing (Input cost per 1M tokens in USD)
+// Model Pricing (Input cost per 1M tokens in USD as of September 2026)
 const MODEL_PRICING = {
-  "claude-sonnet": { name: "Claude 3.7 Sonnet", costPerM: 3.00 },
-  "gemini-flash": { name: "Gemini 2.0 Flash", costPerM: 0.10 },
-  "gpt-4o": { name: "GPT-4o", costPerM: 2.50 },
-  "claude-haiku": { name: "Claude 3.5 Haiku", costPerM: 0.80 },
+  "claude-sonnet-55": { name: "Claude Sonnet 5.5", costPerM: 2.00 },
+  "gpt-6-astra": { name: "GPT-6 Astra", costPerM: 10.00 },
+  "gpt-6-sol": { name: "GPT-6.1 Sol (Agentic Coding)", costPerM: 2.00 },
+  "gemini-38-flash": { name: "Gemini 3.8 Flash", costPerM: 0.75 },
+  "deepseek-v41-flash": { name: "DeepSeek-V4.1-Flash", costPerM: 0.15 },
 };
 
 // Configuration Snippets
