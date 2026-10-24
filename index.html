@@ -343,22 +343,62 @@
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800">FLAGSHIP</span>
-            <span class="text-xs font-mono text-emerald-400">v1.1.0</span>
+            <span class="text-xs font-mono text-emerald-400">v1.2.0</span>
           </div>
           <h3 class="text-xl font-bold text-white">mcp-mesh</h3>
           <p class="text-stone-400 text-sm mt-2 leading-relaxed">
-            The Dynamic Model Context Protocol Gateway &amp; Lazy Tool Router. Features <code class="text-amber-300 font-mono">mcp-mesh doctor</code> diagnostics, SSE remote transport, and dynamic LRU schema cache.
+            The Dynamic Model Context Protocol Gateway &amp; Lazy Tool Router. Features SQLite telemetry ledger, watchdog timeout, circuit breaker self-healing, and SSE transport.
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-stone-500">Python • Zero-Deps • SSE</span>
+          <span class="text-xs font-mono text-stone-500">Python • SQLite • CircuitBreaker</span>
           <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
       </div>
 
-      <!-- Project 2: mcp-mesh-eval -->
+      <!-- Project 2: mcp-mesh-ui (Satellite 2) -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-purple-500/30">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-purple-950 text-purple-300 border border-purple-800">SATELLITE 2</span>
+            <span class="text-xs font-mono text-emerald-400">v1.0.0</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">mcp-mesh-ui</h3>
+          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
+            Real-time topology visualizer &amp; observability dashboard for mcp-mesh. Features dark-mode local Web SPA (port 8765, SSE live stream), ANSI terminal TUI, and tool co-occurrence graph.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+          <span class="text-xs font-mono text-stone-500">Dashboard • SVG Topology • TUI</span>
+          <a href="https://github.com/VanSchulist/mcp-mesh-ui" target="_blank" class="text-xs font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1">
+            Repo →
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 3: mcp-registry-cli (Satellite 3) -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-amber-500/30">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800">SATELLITE 3</span>
+            <span class="text-xs font-mono text-emerald-400">v1.1.0</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">mcp-registry-cli</h3>
+          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
+            Zero-config community package manager &amp; synchronizer for Model Context Protocol. Native multi-client sync across Google Antigravity, Claude Desktop, and Cursor.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+          <span class="text-xs font-mono text-stone-500">CLI • Antigravity • Claude • Cursor</span>
+          <a href="https://github.com/VanSchulist/mcp-registry-cli" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
+            Repo →
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 4: mcp-mesh-eval (Satellite 1) -->
       <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-orange-500/30">
         <div>
           <div class="flex items-center justify-between mb-4">
@@ -367,7 +407,7 @@
           </div>
           <h3 class="text-xl font-bold text-white">mcp-mesh-eval</h3>
           <p class="text-stone-400 text-sm mt-2 leading-relaxed">
-            Empirical benchmark suite measuring tool selection accuracy, TTFT latency, and token cost across 60 enterprise tools on frontier models (GPT-6 Astra, Claude 5.5 Sonnet, Gemini 3.8 Flash, DeepSeek-V4.1-Flash).
+            Empirical benchmark suite measuring tool selection accuracy, TTFT latency, and token cost across 60 enterprise tools on frontier models (GPT-6, Claude 5.5, Gemini 3.8).
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
@@ -378,47 +418,27 @@
         </div>
       </div>
 
-      <!-- Project 3: github-ai-studio -->
-      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+      <!-- Project 5: ghost-job-hunter -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-amber-500/30">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-stone-900 text-stone-300 border border-stone-700">GOVERNANCE</span>
-            <span class="text-xs font-mono text-stone-400">ACTIVE</span>
-          </div>
-          <h3 class="text-xl font-bold text-white">github-ai-studio</h3>
-          <p class="text-stone-400 text-sm mt-2 leading-relaxed">
-            Central engineering lab nervous system, Architecture Decision Records (ADR-001 to ADR-005), 8-phase roadmap, and agent constitution.
-          </p>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-stone-500">Governance • Specs</span>
-          <a href="https://github.com/VanSchulist/github-ai-studio" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
-            Repo →
-          </a>
-        </div>
-      </div>
-
-      <!-- Project 4: ghost-job-hunter -->
-      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950/60 text-amber-300 border border-amber-800/60">TACTICAL CLI</span>
-            <span class="text-xs font-mono text-stone-400">v1.0.0</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950/60 text-amber-300 border border-amber-800/60">TACTICAL AGENT</span>
+            <span class="text-xs font-mono text-emerald-400">v2.0.0</span>
           </div>
           <h3 class="text-xl font-bold text-white">ghost-job-hunter</h3>
           <p class="text-stone-400 text-sm mt-2 leading-relaxed">
-            Open-source heuristic engine &amp; CLI analyzing job postings for corporate hiring theater, evergreen pipeline disclosures, and pay transparency evasion.
+            Autonomous anti-ghost job hunting agent powered by mcp-mesh tool routing. Audits 5 heuristic risk signals, inspects real company GitHub codebases, and synthesizes executive bypass pitches.
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-stone-500">Python • Heuristics</span>
+          <span class="text-xs font-mono text-stone-500">Autonomous Agent • mcp-mesh • Outreach</span>
           <a href="https://github.com/VanSchulist/ghost-job-hunter" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
       </div>
 
-      <!-- Project 5: career-reboot-armor -->
+      <!-- Project 6: career-reboot-armor -->
       <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
@@ -431,28 +451,28 @@
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-stone-500">Docx • Python</span>
+          <span class="text-xs font-mono text-stone-500">Docx • Python • Career</span>
           <a href="https://github.com/VanSchulist/career-reboot-armor" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
       </div>
 
-      <!-- Project 6: mcp-registry-cli (Satellite 3) -->
-      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border-amber-500/30">
+      <!-- Project 7: github-ai-studio -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800">SATELLITE 3</span>
-            <span class="text-xs font-mono text-emerald-400">v1.0.0</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-stone-900 text-stone-300 border border-stone-700">GOVERNANCE</span>
+            <span class="text-xs font-mono text-stone-400">ACTIVE</span>
           </div>
-          <h3 class="text-xl font-bold text-white">mcp-registry-cli</h3>
+          <h3 class="text-xl font-bold text-white">github-ai-studio</h3>
           <p class="text-stone-400 text-sm mt-2 leading-relaxed">
-            The Zero-Config Community Package Manager &amp; Tool Registry for Model Context Protocol. Curated catalog of 25+ verified servers, multi-client injection into <code class="text-amber-300 font-mono">mcp-mesh</code>, Claude Desktop, and Cursor.
+            Central engineering lab nervous system, Architecture Decision Records (ADR-001 to ADR-007), 8-phase roadmap, and agent constitution.
           </p>
         </div>
         <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-          <span class="text-xs font-mono text-stone-500">CLI • 25+ Servers • uvx</span>
-          <a href="https://github.com/VanSchulist/mcp-registry-cli" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
+          <span class="text-xs font-mono text-stone-500">Governance • Specs</span>
+          <a href="https://github.com/VanSchulist/github-ai-studio" target="_blank" class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1">
             Repo →
           </a>
         </div>
