@@ -4,6 +4,7 @@
 > Built by Van Schulist (@VanSchulist). Hosted on Cloudflare Pages.
 
 [![Website](https://img.shields.io/badge/Website-www.existentialcloud.ccwu.cc-f59e0b?style=flat-square)](https://www.existentialcloud.ccwu.cc)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Simulator-10b981?style=flat-square)](https://vanschulist.github.io/existentialcloud-portal/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Hosted: Cloudflare Pages](https://img.shields.io/badge/Hosted-Cloudflare%20Pages-orange?style=flat-square)](https://pages.cloudflare.com/)
 
