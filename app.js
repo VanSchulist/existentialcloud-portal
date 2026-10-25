@@ -1,6 +1,6 @@
 /**
  * Existential Cloud Official Portal (www.existentialcloud.ccwu.cc)
- * Core interactive controller: Token savings simulator, tab switcher, GitHub API loader.
+ * Core interactive controller: Token savings simulator, tab switcher, GitHub API loader, and UN 6-Language i18n engine.
  */
 
 // Model Pricing (Input cost per 1M tokens in USD as of 2026)
@@ -53,6 +53,7 @@ uvx mcp-mesh stats --db`,
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  initI18n();
   initTokenSimulator();
   initCodeTabs();
   initCopyButtons();
@@ -60,7 +61,67 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* -------------------------------------------------------------
- * 1. Interactive Token Savings Simulator
+ * 1. UN 6-Language Internationalization (i18n) Engine
+ * ----------------------------------------------------------- */
+function getNestedTranslation(obj, keyPath) {
+  return keyPath.split(".").reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined), obj);
+}
+
+function setLanguage(lang) {
+  if (typeof LOCALES === "undefined" || !LOCALES[lang]) {
+    lang = "en";
+  }
+  const locale = LOCALES[lang];
+  localStorage.setItem("portal_lang", lang);
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir = locale.dir || "ltr";
+
+  const select = document.getElementById("select-lang");
+  if (select && select.value !== lang) {
+    select.value = lang;
+  }
+
+  // Update all elements with data-i18n
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const translation = getNestedTranslation(locale, key);
+    if (translation !== undefined) {
+      el.textContent = translation;
+    }
+  });
+
+  // Re-trigger simulator recalculation
+  if (window.__recalcSimulator) {
+    window.__recalcSimulator();
+  }
+}
+
+function initI18n() {
+  const select = document.getElementById("select-lang");
+  const stored = localStorage.getItem("portal_lang");
+  let targetLang = "en";
+
+  if (stored && typeof LOCALES !== "undefined" && LOCALES[stored]) {
+    targetLang = stored;
+  } else if (navigator.language) {
+    const browserCode = navigator.language.split("-")[0].toLowerCase();
+    if (typeof LOCALES !== "undefined" && LOCALES[browserCode]) {
+      targetLang = browserCode;
+    }
+  }
+
+  if (select) {
+    select.addEventListener("change", (e) => {
+      setLanguage(e.target.value);
+    });
+  }
+
+  setLanguage(targetLang);
+}
+
+/* -------------------------------------------------------------
+ * 2. Interactive Token Savings Simulator
  * ----------------------------------------------------------- */
 function initTokenSimulator() {
   const serversInput = document.getElementById("input-servers");
@@ -113,7 +174,9 @@ function initTokenSimulator() {
     if (outMonthlyCost) outMonthlyCost.textContent = `$${dollarSaved}`;
   }
 
-  ['input', 'change'].forEach(ev => {
+  window.__recalcSimulator = recalculate;
+
+  ["input", "change"].forEach((ev) => {
     serversInput.addEventListener(ev, recalculate);
     toolsInput.addEventListener(ev, recalculate);
     turnsInput.addEventListener(ev, recalculate);
@@ -124,7 +187,7 @@ function initTokenSimulator() {
 }
 
 /* -------------------------------------------------------------
- * 2. Code Tab Switcher
+ * 3. Code Tab Switcher
  * ----------------------------------------------------------- */
 function initCodeTabs() {
   const tabs = document.querySelectorAll(".code-tab-btn");
@@ -134,9 +197,12 @@ function initCodeTabs() {
     tab.addEventListener("click", () => {
       tabs.forEach((t) => {
         t.classList.remove("active");
+        t.classList.remove("border-emerald-400", "text-white");
+        t.classList.add("border-transparent", "text-zinc-400");
       });
 
-      tab.classList.add("active");
+      tab.classList.add("active", "border-emerald-400", "text-white");
+      tab.classList.remove("border-transparent", "text-zinc-400");
       const target = tab.getAttribute("data-tab");
       if (CONFIG_SNIPPETS[target] && codeBlock) {
         codeBlock.textContent = CONFIG_SNIPPETS[target];
@@ -151,7 +217,7 @@ function initCodeTabs() {
 }
 
 /* -------------------------------------------------------------
- * 3. Copy to Clipboard Utility
+ * 4. Copy to Clipboard Utility
  * ----------------------------------------------------------- */
 function initCopyButtons() {
   const copyBtns = document.querySelectorAll(".copy-btn");
@@ -181,7 +247,7 @@ function initCopyButtons() {
 }
 
 /* -------------------------------------------------------------
- * 4. Live GitHub Repository Metrics
+ * 5. Live GitHub Repository Metrics
  * ----------------------------------------------------------- */
 async function fetchGitHubMetrics() {
   const repos = [

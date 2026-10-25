@@ -26,6 +26,7 @@ jobs:
       - name: Validate JavaScript Syntax
         run: |
           node --check app.js
+          node --check locales.js
 
       - name: Verify Portal Assets & HTML Integrity
         run: |
@@ -33,10 +34,11 @@ jobs:
           import os
           assert os.path.exists('index.html'), 'index.html missing'
           assert os.path.exists('app.js'), 'app.js missing'
+          assert os.path.exists('locales.js'), 'locales.js missing'
           assert os.path.exists('styles.css'), 'styles.css missing'
           with open('index.html', encoding='utf-8') as f:
               html = f.read()
-              for req in ['out-mesh-tokens', 'input-servers', 'input-tools', 'out-saved-pct']:
+              for req in ['out-mesh-tokens', 'input-servers', 'input-tools', 'out-saved-pct', 'select-lang']:
                   assert req in html, f'Missing required DOM ID in index.html: {req}'
           print('Portal integrity validation passed.')
           "
