@@ -95,10 +95,10 @@ function initTokenSimulator() {
     const totalTools = servers * toolsPerServer;
     if (outTotalTools) outTotalTools.textContent = totalTools;
 
-    // Average JSON Schema token footprint per tool is ~220 tokens
-    const rawTokens = totalTools * 220;
-    // mcp-mesh gateway meta-tool overhead is static ~380 tokens
-    const meshTokens = 380;
+    // Benchmark-calibrated tool schema footprint (~163.17 tokens per tool, matching 9,790 tokens for 60 tools)
+    const rawTokens = Math.round(totalTools * 163.17);
+    // mcp-mesh gateway dynamic meta-tool footprint: 527 tokens across 4 meta-tools
+    const meshTokens = 527;
     const savedPerTurn = Math.max(0, rawTokens - meshTokens);
     const pct = rawTokens > 0 ? ((savedPerTurn / rawTokens) * 100).toFixed(1) : 0;
 
