@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mcp-mesh // The Dynamic MCP Gateway & Lazy Tool Router</title>
-  <meta name="description" content="Aggregate 50+ upstream MCP servers, eliminate tool schema context bloat, and slash Turn-0 token consumption by 85–95% with zero dependencies.">
+  <title>mcp-mesh // The Dynamic MCP Gateway &amp; Lazy Tool Router</title>
+  <meta name="description" content="Aggregate 50+ upstream MCP servers, eliminate tool schema context bloat, and slash Turn-0 token consumption by 85–95% with zero external dependencies.">
   
   <meta property="og:title" content="mcp-mesh // The Dynamic MCP Gateway">
   <meta property="og:description" content="Aggregate 50+ upstream MCP servers and slash Turn-0 LLM prompt bloat by 85–95%.">
@@ -40,28 +40,33 @@
 </head>
 <body class="bg-canvas text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white">
 
-  <!-- Navigation Bar -->
-  <header class="sticky top-0 z-50 border-b border-subtle bg-surface/90 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <a href="#" class="flex items-center gap-2.5 text-zinc-100 font-semibold text-sm tracking-tight shrink-0">
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 border-b border-subtle bg-surface/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Version -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="#overview" data-tab-target="overview" class="flex items-center gap-2 text-zinc-100 font-semibold text-sm tracking-tight">
           <span class="w-6 h-6 rounded bg-zinc-800 border border-zinc-700 flex items-center justify-center font-mono text-xs font-bold text-emerald-400">M</span>
-          <span>mcp-mesh</span>
-          <span class="text-[11px] font-mono text-zinc-500 border border-subtle bg-zinc-900/60 px-1.5 py-0.5 rounded">v1.3.0</span>
+          <span data-i18n="nav.brand">mcp-mesh</span>
+          <span class="text-[11px] font-mono text-zinc-500 border border-subtle bg-zinc-900/60 px-1.5 py-0.5 rounded" data-i18n="nav.version">v1.3.0</span>
         </a>
-        <nav class="hidden lg:flex items-center gap-5 text-xs text-zinc-400 font-medium">
-          <a href="#problem" data-i18n="nav.problem" class="hover:text-zinc-200 transition-colors">Problem</a>
-          <a href="#comparison" data-i18n="comparison.tag" class="hover:text-zinc-200 transition-colors">Comparison</a>
-          <a href="#simulator" data-i18n="nav.simulator" class="hover:text-zinc-200 transition-colors">Calculator</a>
-          <a href="#security" data-i18n="nav.security" class="hover:text-zinc-200 transition-colors">Security</a>
-          <a href="#quickstart" data-i18n="nav.setup" class="hover:text-zinc-200 transition-colors">Client Setup</a>
-          <a href="#architecture" data-i18n="nav.architecture" class="hover:text-zinc-200 transition-colors">Architecture</a>
-          <a href="#fleet" data-i18n="nav.fleet" class="hover:text-zinc-200 transition-colors">Ecosystem</a>
-          <a href="#faq" data-i18n="nav.faq" class="hover:text-zinc-200 transition-colors">FAQ</a>
-        </nav>
       </div>
 
-      <div class="flex items-center gap-2.5">
+      <!-- Desktop Tab Bar (SPA View Switcher) -->
+      <nav class="hidden xl:flex items-center gap-1 text-xs font-medium overflow-x-auto py-1">
+        <button data-tab-target="overview" data-i18n="nav.overview" class="nav-tab-btn active border-b-2 border-emerald-400 text-white">Overview</button>
+        <button data-tab-target="architecture" data-i18n="nav.architecture" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Architecture</button>
+        <button data-tab-target="simulator" data-i18n="nav.simulator" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Calculator &amp; Lab</button>
+        <button data-tab-target="quickstart" data-i18n="nav.quickstart" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Client Setup</button>
+        <button data-tab-target="security" data-i18n="nav.security" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Security &amp; Tests</button>
+        <button data-tab-target="observability" data-i18n="nav.observability" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Live Telemetry</button>
+        <button data-tab-target="ecosystem" data-i18n="nav.ecosystem" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Ecosystem</button>
+        <button data-tab-target="faq" data-i18n="nav.faq" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">FAQ</button>
+      </nav>
+
+      <!-- Right Controls: UN Languages & GitHub Stars -->
+      <div class="flex items-center gap-2.5 shrink-0">
         <!-- UN 6-Language Selector Dropdown -->
         <div class="flex items-center gap-1.5 border border-subtle bg-zinc-900/80 rounded-md px-2 py-1 text-xs">
           <span class="text-zinc-400 select-none text-xs">🌐</span>
@@ -75,159 +80,336 @@
           </select>
         </div>
 
-        <a href="http://127.0.0.1:8765" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-medium border border-subtle bg-zinc-900/60 hover:bg-zinc-800 text-zinc-300 transition-all">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span data-i18n="nav.liveTelemetry">Live Telemetry UI</span>
-        </a>
-
-        <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-zinc-100 text-zinc-950 hover:bg-zinc-200 font-semibold transition-all shrink-0">
+        <!-- Star on GitHub Button -->
+        <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-zinc-100 text-zinc-950 hover:bg-zinc-200 font-semibold transition-all shrink-0">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span data-i18n="nav.starGitHub">Star on GitHub</span>
           <span id="stars-mcp-mesh" class="ml-0.5 text-zinc-500 font-mono text-[11px]"></span>
         </a>
       </div>
     </div>
+
+    <!-- Responsive Tab Sub-Bar (Visible on screens < 1280px) -->
+    <div class="xl:hidden border-t border-subtle bg-surface/90 px-4 py-2 flex items-center justify-between gap-3 overflow-x-auto custom-scroll">
+      <div class="flex items-center gap-1.5 text-xs">
+        <button data-tab-target="overview" data-i18n="nav.overview" class="nav-tab-btn active text-white">Overview</button>
+        <button data-tab-target="architecture" data-i18n="nav.architecture" class="nav-tab-btn text-zinc-400">Architecture</button>
+        <button data-tab-target="simulator" data-i18n="nav.simulator" class="nav-tab-btn text-zinc-400">Calculator</button>
+        <button data-tab-target="quickstart" data-i18n="nav.quickstart" class="nav-tab-btn text-zinc-400">Setup</button>
+        <button data-tab-target="security" data-i18n="nav.security" class="nav-tab-btn text-zinc-400">Security</button>
+        <button data-tab-target="observability" data-i18n="nav.observability" class="nav-tab-btn text-zinc-400">Telemetry</button>
+        <button data-tab-target="ecosystem" data-i18n="nav.ecosystem" class="nav-tab-btn text-zinc-400">Ecosystem</button>
+        <button data-tab-target="faq" data-i18n="nav.faq" class="nav-tab-btn text-zinc-400">FAQ</button>
+      </div>
+      <div class="sm:hidden shrink-0">
+        <select id="select-view-mobile" aria-label="Select View" class="bg-zinc-900 border border-subtle text-zinc-200 text-xs rounded px-2 py-1">
+          <option value="overview">Overview</option>
+          <option value="architecture">Architecture</option>
+          <option value="simulator">Calculator &amp; Lab</option>
+          <option value="quickstart">Client Setup</option>
+          <option value="security">Security &amp; Tests</option>
+          <option value="observability">Live Telemetry</option>
+          <option value="ecosystem">Ecosystem</option>
+          <option value="faq">FAQ</option>
+        </select>
+      </div>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14 text-center lg:pt-24 lg:pb-20">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-subtle bg-zinc-900/80 text-zinc-300 text-xs font-mono mb-8">
-      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-      <span data-i18n="hero.badge">v1.3.0 RELEASE: UNIVERSAL HETEROGENEOUS MCP FEDERATION</span>
-    </div>
-
-    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.12]">
-      <span data-i18n="hero.title">Cut LLM prompt bloat by 90%.</span><br>
-      <span class="text-zinc-400 font-medium" data-i18n="hero.subtitle">The dynamic MCP gateway &amp; lazy router.</span>
-    </h1>
-
-    <p class="mt-6 text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed" data-i18n="hero.desc">
-      Connecting coding agents to 10+ Model Context Protocol servers injects 30,000+ tokens of heavy JSON schemas before you type a word. mcp-mesh federates your servers into a single, high-performance bridge—indexing, pre-warming, and routing tools on demand with zero dependencies.
-    </p>
-
-    <!-- CLI Quick Copy Box -->
-    <div class="mt-8 max-w-lg mx-auto bg-surface border border-subtle rounded-lg p-2.5 flex items-center justify-between font-mono text-xs shadow-lg">
-      <div class="flex items-center gap-2 pl-2 overflow-x-auto text-zinc-300">
-        <span class="text-emerald-400 select-none">$</span>
-        <span id="hero-install-cmd">uvx mcp-mesh run --federate</span>
-      </div>
-      <button class="copy-btn px-3 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-sans text-xs transition-colors shrink-0" data-copy-target="hero-install-cmd">
-        Copy
-      </button>
-    </div>
-
-    <!-- Concrete Numbers Grid -->
-    <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
-      <div class="glass-panel p-4 rounded-lg">
-        <div class="text-2xl font-bold text-emerald-400 font-mono">94.6%</div>
-        <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricTokenRed">Turn-0 Prompt Token Reduction</div>
-      </div>
-      <div class="glass-panel p-4 rounded-lg">
-        <div class="text-2xl font-bold text-white font-mono">Zero Deps</div>
-        <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricDeps">100% Python Standard Library</div>
-      </div>
-      <div class="glass-panel p-4 rounded-lg">
-        <div class="text-2xl font-bold text-sky-400 font-mono">&lt; 1.2s</div>
-        <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricDiscovery">10-Server Concurrent Discovery</div>
-      </div>
-      <div class="glass-panel p-4 rounded-lg">
-        <div class="text-2xl font-bold text-white font-mono">161 / 161</div>
-        <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricTests">Automated Regression Tests Passing</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Problem Statement Section -->
-  <section id="problem" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
-    <div class="max-w-3xl">
-      <span class="text-xs font-mono uppercase tracking-wider text-zinc-400" data-i18n="problem.tag">The Bottleneck</span>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="problem.title">Why static MCP schemas break coding agents</h2>
-    </div>
-
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-panel p-5 rounded-lg">
-        <div class="text-sm font-semibold text-white" data-i18n="problem.p1Title">1. Turn-0 Context Exhaustion</div>
-        <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="problem.p1Desc">
-          Each connected tool adds ~163 tokens of JSON schema. Connecting 60 tools across GitHub, Postgres, and Slack dumps nearly 10,000 tokens into the prompt on every turn, burning dollars before work starts.
-        </p>
+  <!-- ========================================================================= -->
+  <!-- VIEW 1: OVERVIEW & ARCHITECTURAL SUMMARY                                    -->
+  <!-- ========================================================================= -->
+  <main id="view-overview" class="tab-view active max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    
+    <!-- Hero Section -->
+    <div class="text-center max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-subtle bg-zinc-900/80 text-zinc-300 text-xs font-mono mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        <span data-i18n="hero.badge">v1.3.0 PRODUCTION RELEASE // HETEROGENEOUS MCP FEDERATION</span>
       </div>
 
-      <div class="glass-panel p-5 rounded-lg">
-        <div class="text-sm font-semibold text-white" data-i18n="problem.p2Title">2. Attention Decay ('Lost in the Middle')</div>
-        <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="problem.p2Desc">
-          Flooding the context with hundreds of parameter signatures distracts frontier models. High schema density causes parameter hallucinations, invalid formats, and ignored instructions.
-        </p>
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+        <span data-i18n="hero.title">Cut LLM prompt bloat by 90%.</span><br>
+        <span class="text-zinc-400 font-medium" data-i18n="hero.subtitle">The dynamic MCP gateway &amp; lazy router.</span>
+      </h1>
+
+      <p class="mt-6 text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed" data-i18n="hero.desc">
+        Connecting coding agents to 10+ Model Context Protocol servers injects 30,000+ tokens of heavy JSON schemas before you type a word. mcp-mesh federates your servers into a single, high-performance bridge—indexing, pre-warming, and routing tools on demand with zero external dependencies.
+      </p>
+
+      <!-- CLI Quick Copy Box -->
+      <div class="mt-8 max-w-lg mx-auto bg-surface border border-subtle rounded-lg p-2.5 flex items-center justify-between font-mono text-xs shadow-lg dir-ltr-force">
+        <div class="flex items-center gap-2 pl-2 overflow-x-auto text-zinc-300">
+          <span class="text-emerald-400 select-none">$</span>
+          <span id="hero-install-cmd">uvx mcp-mesh run --federate</span>
+        </div>
+        <button class="copy-btn px-3 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-sans text-xs transition-colors shrink-0" data-copy-target="hero-install-cmd">
+          Copy
+        </button>
       </div>
 
-      <div class="glass-panel p-5 rounded-lg">
-        <div class="text-sm font-semibold text-white" data-i18n="problem.p3Title">3. Fragmented Workstation Configs</div>
-        <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="problem.p3Desc">
-          Developers maintain separate configs across Claude Desktop, Cursor, and Antigravity. Duplicate subprocesses spawn zombie background jobs and slow down workstation performance.
-        </p>
+      <!-- Key Engineering Metrics Grid -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 text-left">
+        <div class="glass-panel p-4 rounded-lg">
+          <div class="text-2xl font-bold text-emerald-400 font-mono">94.6%</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricTokenRed">Turn-0 Prompt Token Reduction</div>
+        </div>
+        <div class="glass-panel p-4 rounded-lg">
+          <div class="text-2xl font-bold text-white font-mono">Zero Deps</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricDeps">100% Python Standard Library</div>
+        </div>
+        <div class="glass-panel p-4 rounded-lg">
+          <div class="text-2xl font-bold text-sky-400 font-mono">&lt; 1.2s</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricDiscovery">10-Server Concurrent Discovery</div>
+        </div>
+        <div class="glass-panel p-4 rounded-lg">
+          <div class="text-2xl font-bold text-white font-mono">161 / 161</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="hero.metricTests">Automated Regression Tests Passing</div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Side-by-side Architectural Comparison -->
-  <section id="comparison" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
+    <!-- The 3 Root Problems Section -->
+    <div class="mt-20 pt-12 border-t border-subtle">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono uppercase tracking-wider text-rose-400" data-i18n="problem.tag">The Bottleneck</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="problem.title">Why static MCP schemas break coding agents</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-panel p-5 rounded-lg">
+          <div class="text-sm font-semibold text-white" data-i18n="problem.p1Title">1. Turn-0 Context Exhaustion</div>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="problem.p1Desc">
+            Each connected tool adds ~163 tokens of JSON schema. Connecting 60 tools across GitHub, Postgres, and Slack dumps nearly 10,000 tokens into the prompt on every turn, burning dollars before work starts.
+          </p>
+        </div>
+
+        <div class="glass-panel p-5 rounded-lg">
+          <div class="text-sm font-semibold text-white" data-i18n="problem.p2Title">2. Attention Decay ('Lost in the Middle')</div>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="problem.p2Desc">
+            Flooding the context with hundreds of parameter signatures distracts frontier models. High schema density causes parameter hallucinations, invalid formats, and ignored instructions.
+          </p>
+        </div>
+
+        <div class="glass-panel p-5 rounded-lg">
+          <div class="text-sm font-semibold text-white" data-i18n="problem.p3Title">3. Fragmented Workstation Configs</div>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="problem.p3Desc">
+            Developers maintain separate configs across Claude Desktop, Cursor, and Antigravity. Duplicate subprocesses spawn zombie background jobs and slow down workstation performance.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side-by-side Architectural Comparison -->
+    <div class="mt-16 pt-12 border-t border-subtle">
+      <div class="max-w-3xl mb-8">
+        <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="comparison.tag">Architecture Comparison</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="comparison.title">Raw Static Injection vs. mcp-mesh Gateway</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Without Mesh -->
+        <div class="bg-surface border border-rose-500/20 rounded-xl p-6 relative">
+          <div class="flex items-center justify-between mb-3 border-b border-rose-500/10 pb-3">
+            <span class="text-xs font-mono font-bold text-rose-400" data-i18n="comparison.rawLabel">WITHOUT MESH (STATIC INJECTION)</span>
+            <span class="text-[11px] font-mono text-zinc-500">Naive Architecture</span>
+          </div>
+          <div class="text-sm font-semibold text-zinc-200" data-i18n="comparison.rawSubtitle">Naive multi-server client architecture</div>
+          <ul class="mt-4 space-y-3 text-xs text-zinc-400">
+            <li class="flex items-start gap-2">
+              <span class="text-rose-400 font-bold shrink-0">✕</span>
+              <span data-i18n="comparison.rawP1">9,790 tokens injected into system prompt on turn 0</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-rose-400 font-bold shrink-0">✕</span>
+              <span data-i18n="comparison.rawP2">High schema density induces severe attention decay</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-rose-400 font-bold shrink-0">✕</span>
+              <span data-i18n="comparison.rawP3">Disparate unmanaged child processes and zombie leaks</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- With mcp-mesh -->
+        <div class="bg-surface border border-emerald-500/20 rounded-xl p-6 relative">
+          <div class="flex items-center justify-between mb-3 border-b border-emerald-500/10 pb-3">
+            <span class="text-xs font-mono font-bold text-emerald-400" data-i18n="comparison.meshLabel">WITH MCP-MESH GATEWAY</span>
+            <span class="text-[11px] font-mono text-emerald-400/80">Production Proxy</span>
+          </div>
+          <div class="text-sm font-semibold text-zinc-200" data-i18n="comparison.meshSubtitle">Universal transparent reverse proxy</div>
+          <ul class="mt-4 space-y-3 text-xs text-zinc-400">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold shrink-0">✓</span>
+              <span data-i18n="comparison.meshP1">Only 4 lightweight meta-tools (527 tokens total)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold shrink-0">✓</span>
+              <span data-i18n="comparison.meshP2">Sub-millisecond BM25 keyword tool search &amp; predictive pre-warm</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold shrink-0">✓</span>
+              <span data-i18n="comparison.meshP3">Continuous stderr drain &amp; dedicated thread lifecycle supervision</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Quick Action Navigation Links -->
+      <div class="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono">
+        <a href="#simulator" data-tab-target="simulator" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-subtle transition-all">
+          <span>&rarr; Open Interactive Calculator</span>
+        </a>
+        <a href="#architecture" data-tab-target="architecture" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-subtle transition-all">
+          <span>&rarr; View Technical Architecture</span>
+        </a>
+        <a href="#quickstart" data-tab-target="quickstart" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-subtle transition-all">
+          <span>&rarr; Configure Client IDEs</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 2: ARCHITECTURE & TECHNICAL SPECIFICATION                            -->
+  <!-- ========================================================================= -->
+  <main id="view-architecture" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <div class="max-w-3xl mb-8">
-      <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="comparison.tag">Architecture Comparison</span>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="comparison.title">Raw Static Injection vs. mcp-mesh Gateway</h2>
+      <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="arch.tag">Technical Specification</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="arch.title">Transparent Multiplexing &amp; Lazy Routing Architecture</h2>
+      <p class="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed" data-i18n="arch.desc">
+        mcp-mesh operates as an in-memory transparent reverse proxy between your AI client and upstream MCP child processes with sub-millisecond overhead.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Without Mesh -->
-      <div class="bg-surface border border-rose-500/20 rounded-xl p-6 relative">
-        <div class="flex items-center justify-between mb-3 border-b border-rose-500/10 pb-3">
-          <span class="text-xs font-mono font-bold text-rose-400" data-i18n="comparison.rawLabel">WITHOUT MESH (STATIC INJECTION)</span>
-          <span class="text-[11px] font-mono text-zinc-500">Naive Architecture</span>
+    <!-- ASCII Flow Architecture Diagram -->
+    <div class="bg-surface border border-subtle rounded-xl p-6 overflow-x-auto shadow-xl dir-ltr-force">
+      <pre class="font-mono text-xs sm:text-sm text-zinc-300 leading-relaxed">
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │                      Heterogeneous AI Clients / IDEs                    │
+ │               Claude Desktop  │  Cursor  │  Google Antigravity         │
+ └───────────────────────────────────┬────────────────────────────────────┘
+                                     │ Single stdio / JSON-RPC 2.0 connection
+                                     │ Only 4 lightweight Meta-Tools (527 tokens total)
+                                     ▼
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │                   mcp-mesh v1.3.0 Federation Gateway                   │
+ │  ┌──────────────────────────────────────────────────────────────────┐  │
+ │  │        Federation Manager (Auto-discovery, Loop Prevention)       │  │
+ │  ├──────────────────────────────────────────────────────────────────┤  │
+ │  │      Tool Indexer, BM25 Scoring &amp; Predictive Pre-Warmer          │  │
+ │  ├──────────────────────────────────────────────────────────────────┤  │
+ │  │  Circuit Breakers, Telemetry Ledger &amp; Transparent Process Router │  │
+ │  └──────────────────────────────────────────────────────────────────┘  │
+ └───────────────────────────────────┬────────────────────────────────────┘
+                                     │ Concurrently supervised upstream stdio pipes
+         ┌───────────────────────────┼───────────────────────────┐
+         ▼                           ▼                           ▼
+ ┌───────────────────────┐   ┌───────────────────────┐   ┌───────────────────────┐
+ │ ghost-job-hunter MCP  │   │ Postgres MCP          │   │ Filesystem / Git MCP  │
+ │ (Antigravity Config)  │   │ (Claude Config)       │   │ (Cursor Config)       │
+ └───────────────────────┘   └───────────────────────┘   └───────────────────────┘</pre>
+    </div>
+
+    <!-- 4 Core Meta-Tools Specification -->
+    <div class="mt-12">
+      <h3 class="text-lg font-bold text-white mb-4" data-i18n="arch.metaToolsTitle">The 4 Core Meta-Tools (527 Tokens Total)</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <div class="glass-panel p-5 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-sm font-bold text-emerald-400" data-i18n="arch.t1Title">mesh_search_tools</span>
+            <span class="text-[11px] font-mono text-zinc-500">145 tokens</span>
+          </div>
+          <p class="text-xs text-zinc-400 leading-relaxed" data-i18n="arch.t1Desc">
+            Sub-millisecond BM25 keyword indexing across all federated schemas. Finds relevant tools dynamically without dumping whole definitions.
+          </p>
+          <div class="mt-3 p-2 bg-canvas border border-subtle rounded text-[11px] font-mono text-zinc-300 dir-ltr-force">
+            params: { query: string, limit?: integer (default: 5) }
+          </div>
         </div>
-        <div class="text-sm font-semibold text-zinc-200" data-i18n="comparison.rawSubtitle">Naive multi-server client architecture</div>
-        <ul class="mt-4 space-y-3 text-xs text-zinc-400">
-          <li class="flex items-start gap-2">
-            <span class="text-rose-400 font-bold shrink-0">✕</span>
-            <span data-i18n="comparison.rawP1">9,790 tokens injected into system prompt on turn 0</span>
+
+        <div class="glass-panel p-5 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-sm font-bold text-sky-400" data-i18n="arch.t2Title">mesh_describe_tool</span>
+            <span class="text-[11px] font-mono text-zinc-500">128 tokens</span>
+          </div>
+          <p class="text-xs text-zinc-400 leading-relaxed" data-i18n="arch.t2Desc">
+            Just-In-Time schema retrieval. Fetches exact parameter types, required fields, and enums only when the LLM selects a specific tool.
+          </p>
+          <div class="mt-3 p-2 bg-canvas border border-subtle rounded text-[11px] font-mono text-zinc-300 dir-ltr-force">
+            params: { tool_name: string }
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-sm font-bold text-amber-400" data-i18n="arch.t3Title">mesh_invoke_tool</span>
+            <span class="text-[11px] font-mono text-zinc-500">136 tokens</span>
+          </div>
+          <p class="text-xs text-zinc-400 leading-relaxed" data-i18n="arch.t3Desc">
+            Transparent stdio dispatch to target child process. Supervised execution with timeouts and output capture.
+          </p>
+          <div class="mt-3 p-2 bg-canvas border border-subtle rounded text-[11px] font-mono text-zinc-300 dir-ltr-force">
+            params: { tool_name: string, arguments: object }
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-sm font-bold text-zinc-200" data-i18n="arch.t4Title">mesh_status</span>
+            <span class="text-[11px] font-mono text-zinc-500">118 tokens</span>
+          </div>
+          <p class="text-xs text-zinc-400 leading-relaxed" data-i18n="arch.t4Desc">
+            Real-time topology, process health, memory usage, circuit breaker states, and SQLite token economics ledger.
+          </p>
+          <div class="mt-3 p-2 bg-canvas border border-subtle rounded text-[11px] font-mono text-zinc-300 dir-ltr-force">
+            params: { verbose?: boolean }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Dive Technical Features -->
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="glass-panel p-6 rounded-xl">
+        <h4 class="text-sm font-bold text-white mb-2" data-i18n="arch.pipeTitle">Subprocess Management &amp; Non-Blocking Supervision</h4>
+        <p class="text-xs text-zinc-400 leading-relaxed" data-i18n="arch.pipeDesc">
+          Standard OS pipes deadlock at 64KB when children write to stderr without a consumer. mcp-mesh spawns dedicated daemon reader threads with 50-line circular ring buffers for continuous non-blocking drain.
+        </p>
+        <ul class="mt-4 space-y-2 text-xs font-mono text-zinc-300">
+          <li class="flex items-center gap-2">
+            <span class="text-emerald-400">✓</span> Cross-platform SIGTERM &amp; Windows taskkill /F /T
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-rose-400 font-bold shrink-0">✕</span>
-            <span data-i18n="comparison.rawP2">High schema density induces severe attention decay</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-rose-400 font-bold shrink-0">✕</span>
-            <span data-i18n="comparison.rawP3">Disparate unmanaged child processes and zombie leaks</span>
+          <li class="flex items-center gap-2">
+            <span class="text-emerald-400">✓</span> Zero orphan zombie processes upon host exit
           </li>
         </ul>
       </div>
 
-      <!-- With mcp-mesh -->
-      <div class="bg-surface border border-emerald-500/20 rounded-xl p-6 relative">
-        <div class="flex items-center justify-between mb-3 border-b border-emerald-500/10 pb-3">
-          <span class="text-xs font-mono font-bold text-emerald-400" data-i18n="comparison.meshLabel">WITH MCP-MESH GATEWAY</span>
-          <span class="text-[11px] font-mono text-emerald-400/80">Production Proxy</span>
-        </div>
-        <div class="text-sm font-semibold text-zinc-200" data-i18n="comparison.meshSubtitle">Universal transparent reverse proxy</div>
-        <ul class="mt-4 space-y-3 text-xs text-zinc-400">
-          <li class="flex items-start gap-2">
-            <span class="text-emerald-400 font-bold shrink-0">✓</span>
-            <span data-i18n="comparison.meshP1">Only 4 lightweight meta-tools (527 tokens total)</span>
+      <div class="glass-panel p-6 rounded-xl">
+        <h4 class="text-sm font-bold text-white mb-2" data-i18n="arch.prewarmTitle">Predictive Pre-Warming Engine</h4>
+        <p class="text-xs text-zinc-400 leading-relaxed" data-i18n="arch.prewarmDesc">
+          Searching for a tool triggers an asynchronous background spawn of the target downstream server before the LLM generates the invoke call, completely hiding cold-start latency.
+        </p>
+        <ul class="mt-4 space-y-2 text-xs font-mono text-zinc-300">
+          <li class="flex items-center gap-2">
+            <span class="text-sky-400">⚡</span> 0ms added invocation latency for hot tools
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-emerald-400 font-bold shrink-0">✓</span>
-            <span data-i18n="comparison.meshP2">Sub-millisecond BM25 keyword tool search &amp; predictive pre-warm</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-emerald-400 font-bold shrink-0">✓</span>
-            <span data-i18n="comparison.meshP3">Continuous stderr drain &amp; dedicated thread lifecycle supervision</span>
+          <li class="flex items-center gap-2">
+            <span class="text-sky-400">⚡</span> Background PID initialization in ~120ms
           </li>
         </ul>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Interactive Token Calculator Section -->
-  <section id="simulator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
-    <div class="max-w-3xl mb-10">
-      <span class="text-xs font-mono uppercase tracking-wider text-emerald-400" data-i18n="simulator.tag">Interactive Calculator</span>
+  <!-- ========================================================================= -->
+  <!-- VIEW 3: INTERACTIVE LAB & TOKEN CALCULATOR                                 -->
+  <!-- ========================================================================= -->
+  <main id="view-simulator" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <div class="max-w-3xl mb-8">
+      <span class="text-xs font-mono uppercase tracking-wider text-emerald-400" data-i18n="simulator.tag">Interactive Lab</span>
       <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="simulator.title">Simulate Your Token &amp; Dollar Savings</h2>
       <p class="text-xs sm:text-sm text-zinc-400 mt-2" data-i18n="simulator.desc">
         Adjust parameters to calculate exact context window savings and estimated API bill reductions based on empirical benchmark models.
@@ -236,7 +418,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       <!-- Input Controls -->
-      <div class="lg:col-span-5 bg-surface border border-subtle p-6 rounded-xl space-y-5">
+      <div class="lg:col-span-5 bg-surface border border-subtle p-6 rounded-xl space-y-5 shadow-xl">
         <div class="flex items-center justify-between border-b border-subtle pb-3">
           <span class="text-xs font-semibold uppercase tracking-wider text-zinc-300" data-i18n="simulator.paramsTitle">Workstation Parameters</span>
           <span class="text-[11px] font-mono text-emerald-400" data-i18n="simulator.liveFormula">Live Formula</span>
@@ -301,7 +483,7 @@
         </div>
 
         <!-- Big Highlight Banner -->
-        <div class="bg-surface border border-subtle p-6 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div class="bg-surface border border-subtle p-6 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xl">
           <div>
             <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400" data-i18n="simulator.savedBannerTitle">Prompt Context Reduction</span>
             <div class="flex items-baseline gap-2.5 mt-1">
@@ -320,11 +502,11 @@
           </div>
         </div>
 
-        <!-- CLI Validation Snippet -->
-        <div class="bg-input border border-subtle p-3 rounded-lg flex items-center justify-between font-mono text-xs">
+        <!-- CLI Stats Snippet -->
+        <div class="bg-input border border-subtle p-3 rounded-lg flex items-center justify-between font-mono text-xs dir-ltr-force">
           <div class="flex items-center gap-2 overflow-x-auto text-zinc-300">
             <span class="text-zinc-500">$</span>
-            <span id="cli-stats-cmd">python main.py stats --federate</span>
+            <span id="cli-stats-cmd">python -m mcp_mesh.cli stats --db</span>
           </div>
           <button class="copy-btn px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors shrink-0" data-copy-target="cli-stats-cmd">
             Copy
@@ -332,18 +514,136 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Production Security & Hardening Section -->
-  <section id="security" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
+    <!-- BM25 Tool Search & Routing Playground -->
+    <div class="mt-16 pt-12 border-t border-subtle">
+      <div class="max-w-3xl mb-6">
+        <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="simulator.playgroundTitle">Interactive Tool Routing &amp; BM25 Playground</span>
+        <h3 class="text-xl font-bold text-white mt-1" data-i18n="simulator.playgroundDesc">Test natural language query routing across simulated upstream servers in real time.</h3>
+      </div>
+
+      <div class="bg-surface border border-subtle rounded-xl p-5 shadow-xl">
+        <div class="mb-4">
+          <input type="text" id="input-playground-query" data-i18n-placeholder="simulator.playgroundPlaceholder" placeholder="Type tool search query, e.g. git commit, postgres query, audit job..." class="w-full bg-input border border-subtle rounded-lg px-4 py-2.5 text-xs sm:text-sm font-mono text-zinc-200 focus:outline-none focus:border-emerald-400 transition-colors">
+        </div>
+
+        <div id="playground-results" class="space-y-2">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 4: CLIENT SETUP & INTEGRATION                                        -->
+  <!-- ========================================================================= -->
+  <main id="view-quickstart" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <div class="max-w-3xl mb-8">
+      <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="setup.tag">Configuration</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="setup.title">One-Command Integration</h2>
+      <p class="text-xs sm:text-sm text-zinc-400 mt-2" data-i18n="setup.desc">
+        Add <code class="text-zinc-200 font-mono">mcp-mesh</code> as your single master MCP bridge. The <code class="text-zinc-200 font-mono">--federate</code> flag automatically auto-discovers all local server configs.
+      </p>
+    </div>
+
+    <!-- Global One Liner Install -->
+    <div class="mb-8 bg-surface border border-subtle rounded-xl p-6 shadow-xl">
+      <div class="flex items-center justify-between mb-3 border-b border-subtle pb-3">
+        <span class="text-xs font-mono font-bold text-emerald-400" data-i18n="setup.oneLinerTitle">Global One-Liner Install</span>
+        <span class="text-[11px] font-mono text-zinc-400" data-i18n="setup.oneLinerSub">Runs instantly with zero external dependencies using uv or python</span>
+      </div>
+      <div class="bg-input border border-subtle p-3 rounded-lg flex items-center justify-between font-mono text-xs dir-ltr-force">
+        <div class="flex items-center gap-2 overflow-x-auto text-zinc-200">
+          <span class="text-emerald-400 select-none">$</span>
+          <span id="quickstart-cmd">uvx mcp-mesh run --federate</span>
+        </div>
+        <button class="copy-btn px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors shrink-0" data-copy-target="quickstart-cmd">
+          Copy
+        </button>
+      </div>
+    </div>
+
+    <!-- IDE Configuration Switcher Tabs -->
+    <div class="bg-surface border border-subtle rounded-xl overflow-hidden shadow-xl">
+      <!-- Tabs Header -->
+      <div class="flex border-b border-subtle bg-zinc-950/40 px-3 pt-2 gap-1 overflow-x-auto custom-scroll">
+        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-emerald-400 text-white bg-surface" data-tab="claude">
+          Claude Desktop
+        </button>
+        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-transparent text-zinc-400 hover:text-zinc-200" data-tab="cursor">
+          Cursor IDE
+        </button>
+        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-transparent text-zinc-400 hover:text-zinc-200" data-tab="antigravity">
+          Google Antigravity
+        </button>
+        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-transparent text-zinc-400 hover:text-zinc-200" data-tab="cli">
+          CLI Standalone
+        </button>
+        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-transparent text-zinc-400 hover:text-zinc-200" data-tab="python">
+          Python SDK API
+        </button>
+      </div>
+
+      <!-- Code Box -->
+      <div class="relative p-5 bg-[#0b0c0f] dir-ltr-force">
+        <button class="copy-btn absolute top-4 right-4 px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-xs transition-colors" data-copy-target="code-display">
+          Copy
+        </button>
+        <pre class="overflow-x-auto font-mono text-xs leading-relaxed text-zinc-200"><code id="code-display">{ ... }</code></pre>
+      </div>
+    </div>
+
+    <!-- Configuration Paths Reference Table -->
+    <div class="mt-8">
+      <h4 class="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-3" data-i18n="setup.configPathsTitle">Configuration File Locations by Operating System</h4>
+      <div class="bg-surface border border-subtle rounded-xl overflow-x-auto">
+        <table class="w-full text-xs font-mono text-left text-zinc-300">
+          <thead class="bg-zinc-950/60 border-b border-subtle text-zinc-400">
+            <tr>
+              <th class="p-3">Client / IDE</th>
+              <th class="p-3">macOS Path</th>
+              <th class="p-3">Windows Path</th>
+              <th class="p-3">Linux Path</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-subtle">
+            <tr>
+              <td class="p-3 font-semibold text-white">Claude Desktop</td>
+              <td class="p-3 text-zinc-400">~/Library/Application Support/Claude/claude_desktop_config.json</td>
+              <td class="p-3 text-zinc-400">%APPDATA%\Claude\claude_desktop_config.json</td>
+              <td class="p-3 text-zinc-400">~/.config/Claude/claude_desktop_config.json</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">Cursor IDE</td>
+              <td class="p-3 text-zinc-400">~/.cursor/mcp.json</td>
+              <td class="p-3 text-zinc-400">%USERPROFILE%\.cursor\mcp.json</td>
+              <td class="p-3 text-zinc-400">~/.cursor/mcp.json</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">Google Antigravity</td>
+              <td class="p-3 text-zinc-400">~/.gemini/config/mcp_config.json</td>
+              <td class="p-3 text-zinc-400">%USERPROFILE%\.gemini\config\mcp_config.json</td>
+              <td class="p-3 text-zinc-400">~/.gemini/config/mcp_config.json</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 5: SECURITY AUDIT & VERIFICATION MATRIX                              -->
+  <!-- ========================================================================= -->
+  <main id="view-security" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <div class="max-w-3xl mb-8">
       <span class="text-xs font-mono uppercase tracking-wider text-emerald-400" data-i18n="security.tag">Production Hardening</span>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="security.title">Enterprise-Grade Reliability &amp; Security</h2>
-      <p class="text-xs sm:text-sm text-zinc-400 mt-2" data-i18n="security.desc">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="security.title">Enterprise-Grade Reliability &amp; Security Audit</h2>
+      <p class="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed" data-i18n="security.desc">
         mcp-mesh is built with defense-in-depth principles to protect local developer workstations and remote server deployments.
       </p>
     </div>
 
+    <!-- Security Layers Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="glass-panel p-5 rounded-xl">
         <div class="flex items-center gap-2 text-sm font-semibold text-white">
@@ -385,86 +685,157 @@
         </p>
       </div>
     </div>
-  </section>
 
-  <!-- Client Integration Section (Tabs) -->
-  <section id="quickstart" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
+    <!-- Automated Regression Verification Matrix -->
+    <div class="mt-14 pt-10 border-t border-subtle">
+      <div class="max-w-3xl mb-6">
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-400" data-i18n="security.auditTitle">Automated Regression Verification Matrix</span>
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1" data-i18n="security.auditDesc">
+          Empirical verification results from 161 automated regression tests passing across 5 repositories.
+        </p>
+      </div>
+
+      <div class="bg-surface border border-subtle rounded-xl overflow-x-auto shadow-xl">
+        <table class="w-full text-xs font-mono text-left text-zinc-300">
+          <thead class="bg-zinc-950/60 border-b border-subtle text-zinc-400">
+            <tr>
+              <th class="p-3" data-i18n="security.repoHeader">Repository</th>
+              <th class="p-3" data-i18n="security.suiteHeader">Test Suite Focus</th>
+              <th class="p-3 text-right" data-i18n="security.countHeader">Passing Tests</th>
+              <th class="p-3 text-right" data-i18n="security.statusHeader">Verified Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-subtle">
+            <tr>
+              <td class="p-3 font-semibold text-white">mcp-mesh</td>
+              <td class="p-3 text-zinc-400">Federation, BM25 Indexer, Pipe Drain, Circuit Breakers</td>
+              <td class="p-3 text-right text-emerald-400 font-bold">46 / 46</td>
+              <td class="p-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[11px]">100% PASS</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">mcp-mesh-ui</td>
+              <td class="p-3 text-zinc-400">SSE Live Stream, Port 8765 Web SPA, Topology Graph</td>
+              <td class="p-3 text-right text-emerald-400 font-bold">14 / 14</td>
+              <td class="p-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[11px]">100% PASS</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">mcp-mesh-eval</td>
+              <td class="p-3 text-zinc-400">94.6% Token Reduction, Latency Benchmark, Cost Modeling</td>
+              <td class="p-3 text-right text-emerald-400 font-bold">15 / 15</td>
+              <td class="p-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[11px]">100% PASS</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">mcp-registry-cli</td>
+              <td class="p-3 text-zinc-400">Remote Registry Search, Schema Ingestion, Health Checking</td>
+              <td class="p-3 text-right text-emerald-400 font-bold">12 / 12</td>
+              <td class="p-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[11px]">100% PASS</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">ghost-job-hunter</td>
+              <td class="p-3 text-zinc-400">5 Scoring Heuristics, Multi-Board Scraper, SQLite Ledger</td>
+              <td class="p-3 text-right text-emerald-400 font-bold">42 / 42</td>
+              <td class="p-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[11px]">100% PASS</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">career-reboot-armor</td>
+              <td class="p-3 text-zinc-400">Documentation Integrity, Markdown Linting, Structure Tests</td>
+              <td class="p-3 text-right text-emerald-400 font-bold">32 / 32</td>
+              <td class="p-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 text-[11px]">100% PASS</span></td>
+            </tr>
+          </tbody>
+          <tfoot class="bg-zinc-950/80 font-bold text-white border-t border-subtle">
+            <tr>
+              <td class="p-3">Total Fleet Suite</td>
+              <td class="p-3 text-zinc-400">6 Repositories Across Ecosystem</td>
+              <td class="p-3 text-right text-emerald-400 font-bold">161 / 161</td>
+              <td class="p-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[11px]">ALL PASSED</span></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 6: LIVE OBSERVABILITY & TELEMETRY STREAM                              -->
+  <!-- ========================================================================= -->
+  <main id="view-observability" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <div class="max-w-3xl mb-8">
-      <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="setup.tag">Configuration</span>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="setup.title">One-Command Integration</h2>
-      <p class="text-xs sm:text-sm text-zinc-400 mt-2" data-i18n="setup.desc">
-        Add <code class="text-zinc-200 font-mono">mcp-mesh</code> as your single master MCP bridge. The <code class="text-zinc-200 font-mono">--federate</code> flag automatically auto-discovers all local server configs.
+      <span class="text-xs font-mono uppercase tracking-wider text-emerald-400" data-i18n="telemetry.tag">Live Observability</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="telemetry.title">Real-Time Telemetry &amp; Topology Stream</h2>
+      <p class="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed" data-i18n="telemetry.desc">
+        Why was 127.0.0.1:8765 previously shown? When running locally, mcp-mesh-ui binds an SSE event stream and HTTP visualizer to http://127.0.0.1:8765. Below is an interactive client simulation, plus instructions to connect your local daemon.
       </p>
     </div>
 
-    <div class="bg-surface border border-subtle rounded-xl overflow-hidden shadow-lg">
-      <!-- Tabs Header -->
-      <div class="flex border-b border-subtle bg-zinc-950/40 px-3 pt-2 gap-1 overflow-x-auto">
-        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-emerald-400 text-white bg-surface" data-tab="claude">
-          Claude Desktop
-        </button>
-        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-transparent text-zinc-400 hover:text-zinc-200" data-tab="cursor">
-          Cursor IDE
-        </button>
-        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-transparent text-zinc-400 hover:text-zinc-200" data-tab="antigravity">
-          Google Antigravity
-        </button>
-        <button class="code-tab-btn px-3 py-1.5 text-xs font-mono font-medium rounded-t border-b-2 border-transparent text-zinc-400 hover:text-zinc-200" data-tab="cli">
-          CLI Standalone
+    <!-- Live In-Browser Telemetry Stream Simulation -->
+    <div class="bg-surface border border-subtle rounded-xl p-5 shadow-xl">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-subtle">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-xs font-mono font-bold text-white uppercase tracking-wider" data-i18n="telemetry.simStreamTitle">Interactive Telemetry Event Feed (In-Browser Simulation)</span>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-mono">
+          <button id="btn-stream-toggle" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-subtle transition-colors" data-i18n="telemetry.pauseBtn">
+            Pause Stream
+          </button>
+          <button id="btn-stream-clear" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 border border-subtle transition-colors" data-i18n="telemetry.clearBtn">
+            Clear Feed
+          </button>
+          <button id="btn-stream-trigger" class="px-2.5 py-1 rounded bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/30 transition-colors" data-i18n="telemetry.triggerBtn">
+            Simulate Invocations
+          </button>
+        </div>
+      </div>
+
+      <!-- Terminal Log Output Area -->
+      <div id="telemetry-log-container" class="h-64 overflow-y-auto bg-[#07080a] border border-subtle rounded-lg p-3 custom-scroll dir-ltr-force">
+        <!-- Log lines dynamically appended via app.js -->
+      </div>
+    </div>
+
+    <!-- Localhost Daemon Connector Section -->
+    <div class="mt-8 bg-surface border border-subtle rounded-xl p-6 shadow-xl">
+      <div class="flex items-center justify-between mb-3 border-b border-subtle pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-bold text-white" data-i18n="telemetry.localTitle">Connect Local mcp-mesh-ui Daemon</span>
+          <span id="local-daemon-status" class="text-[11px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">UNCHECKED</span>
+        </div>
+        <button id="btn-check-local-daemon" class="text-xs font-mono px-3 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-subtle transition-colors" data-i18n="telemetry.checkStatusBtn">
+          Probe Local Daemon Status
         </button>
       </div>
 
-      <!-- Code Box -->
-      <div class="relative p-5 bg-[#0b0c0f]">
-        <button class="copy-btn absolute top-4 right-4 px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-xs transition-colors" data-copy-target="code-display">
+      <p class="text-xs text-zinc-400 mb-4 leading-relaxed" data-i18n="telemetry.localDesc">
+        Run the following command on your workstation to start the local visualizer and connect your IDEs:
+      </p>
+
+      <div class="bg-input border border-subtle p-3 rounded-lg flex items-center justify-between font-mono text-xs dir-ltr-force mb-4">
+        <div class="flex items-center gap-2 overflow-x-auto text-zinc-200">
+          <span class="text-emerald-400 select-none">$</span>
+          <span id="cmd-run-ui">uvx mcp-mesh-ui --port 8765</span>
+        </div>
+        <button class="copy-btn px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors shrink-0" data-copy-target="cmd-run-ui">
           Copy
         </button>
-        <pre class="overflow-x-auto font-mono text-xs leading-relaxed text-zinc-200"><code id="code-display">{ ... }</code></pre>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="http://127.0.0.1:8765" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-mono border border-subtle transition-colors">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span data-i18n="telemetry.openLocalBtn">Open Local Dashboard (127.0.0.1:8765)</span>
+        </a>
+        <a href="https://github.com/VanSchulist/mcp-mesh-ui" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs font-mono border border-subtle transition-colors">
+          <span>mcp-mesh-ui GitHub Repository &rarr;</span>
+        </a>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Architecture Section -->
-  <section id="architecture" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
-    <div class="max-w-3xl mb-8">
-      <span class="text-xs font-mono uppercase tracking-wider text-zinc-400" data-i18n="nav.architecture">Architecture</span>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">How Transparent Multiplexing Works</h2>
-      <p class="text-xs sm:text-sm text-zinc-400 mt-2">
-        mcp-mesh operates as an in-memory transparent reverse proxy between your AI client and upstream MCP child processes.
-      </p>
-    </div>
-
-    <div class="bg-surface border border-subtle rounded-xl p-6 overflow-x-auto">
-      <pre class="font-mono text-xs sm:text-sm text-zinc-300 leading-relaxed">
- ┌────────────────────────────────────────────────────────────────────────┐
- │                      Heterogeneous AI Clients / IDEs                    │
- │               Claude Desktop  │  Cursor  │  Google Antigravity         │
- └───────────────────────────────────┬────────────────────────────────────┘
-                                     │ Single stdio / JSON-RPC 2.0 connection
-                                     │ Only 4 lightweight Meta-Tools (527 tokens)
-                                     ▼
- ┌────────────────────────────────────────────────────────────────────────┐
- │                   mcp-mesh v1.3.0 Federation Gateway                   │
- │  ┌──────────────────────────────────────────────────────────────────┐  │
- │  │        Federation Manager (Auto-discovery, Loop Prevention)       │  │
- │  ├──────────────────────────────────────────────────────────────────┤  │
- │  │      Tool Indexer, BM25 Scoring & Predictive Pre-Warmer          │  │
- │  ├──────────────────────────────────────────────────────────────────┤  │
- │  │  Circuit Breakers, Telemetry Ledger & Transparent Process Router │  │
- │  └──────────────────────────────────────────────────────────────────┘  │
- └───────────────────────────────────┬────────────────────────────────────┘
-                                     │ Concurrently supervised upstream stdio pipes
-         ┌───────────────────────────┼───────────────────────────┐
-         ▼                           ▼                           ▼
- ┌───────────────────────┐   ┌───────────────────────┐   ┌───────────────────────┐
- │ ghost-job-hunter MCP  │   │ Postgres MCP          │   │ Filesystem / Git MCP  │
- │ (Antigravity Config)  │   │ (Claude Config)       │   │ (Cursor Config)       │
- └───────────────────────┘   └───────────────────────┘   └───────────────────────┘</pre>
-    </div>
-  </section>
-
-  <!-- Ecosystem / Fleet Portfolio -->
-  <section id="fleet" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
+  <!-- ========================================================================= -->
+  <!-- VIEW 7: OPEN SOURCE ECOSYSTEM & FLEET                                     -->
+  <!-- ========================================================================= -->
+  <main id="view-ecosystem" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <div class="max-w-3xl mb-8">
       <span class="text-xs font-mono uppercase tracking-wider text-zinc-400" data-i18n="fleet.tag">Portfolio</span>
       <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="fleet.title">Open Source Ecosystem</h2>
@@ -478,7 +849,7 @@
       <div class="glass-panel p-5 rounded-xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-zinc-800 text-emerald-400 border border-zinc-700">FLAGSHIP</span>
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-zinc-800 text-emerald-400 border border-zinc-700">FLAGSHIP GATEWAY</span>
             <span class="text-xs font-mono text-zinc-400">v1.3.0</span>
           </div>
           <h3 class="text-base font-bold text-white">mcp-mesh</h3>
@@ -487,7 +858,7 @@
           </p>
         </div>
         <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-mono">
-          <span class="text-zinc-500">Python • Federation • ZeroDeps</span>
+          <span class="text-zinc-500">Python • 46/46 Tests • ZeroDeps</span>
           <a href="https://github.com/VanSchulist/mcp-mesh" target="_blank" class="text-zinc-300 hover:text-white flex items-center gap-1">Repo &rarr;</a>
         </div>
       </div>
@@ -505,12 +876,30 @@
           </p>
         </div>
         <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-mono">
-          <span class="text-zinc-500">Vanilla JS • SSE • Live Graph</span>
+          <span class="text-zinc-500">Vanilla JS • 14/14 Tests • SSE</span>
           <a href="https://github.com/VanSchulist/mcp-mesh-ui" target="_blank" class="text-zinc-300 hover:text-white flex items-center gap-1">Repo &rarr;</a>
         </div>
       </div>
 
-      <!-- Project 3: ghost-job-hunter -->
+      <!-- Project 3: mcp-mesh-eval -->
+      <div class="glass-panel p-5 rounded-xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-zinc-800 text-emerald-400 border border-zinc-700">BENCHMARK HARNESS</span>
+            <span class="text-xs font-mono text-zinc-400">v1.0.0</span>
+          </div>
+          <h3 class="text-base font-bold text-white">mcp-mesh-eval</h3>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
+            Empirical benchmarking suite for evaluating prompt token degradation, schema overhead, and end-to-end routing latencies with statistical confidence intervals.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-mono">
+          <span class="text-zinc-500">Python • 15/15 Tests • Benchmarks</span>
+          <a href="https://github.com/VanSchulist/mcp-mesh-eval" target="_blank" class="text-zinc-300 hover:text-white flex items-center gap-1">Repo &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Project 4: ghost-job-hunter -->
       <div class="glass-panel p-5 rounded-xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-2">
@@ -523,16 +912,16 @@
           </p>
         </div>
         <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-mono">
-          <span class="text-zinc-500">Python • SQLite • MCP Server</span>
+          <span class="text-zinc-500">Python • 42/42 Tests • MCP Server</span>
           <a href="https://github.com/VanSchulist/ghost-job-hunter" target="_blank" class="text-zinc-300 hover:text-white flex items-center gap-1">Repo &rarr;</a>
         </div>
       </div>
 
-      <!-- Project 4: career-reboot-armor -->
+      <!-- Project 5: career-reboot-armor -->
       <div class="glass-panel p-5 rounded-xl flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">TACTICAL MANUAL</span>
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">TACTICAL PLAYBOOK</span>
             <span class="text-xs font-mono text-zinc-400">Phase 3</span>
           </div>
           <h3 class="text-base font-bold text-white">career-reboot-armor</h3>
@@ -541,15 +930,35 @@
           </p>
         </div>
         <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-mono">
-          <span class="text-zinc-500">Markdown • Automated Testing</span>
+          <span class="text-zinc-500">Markdown • 32/32 Tests • Playbook</span>
           <a href="https://github.com/VanSchulist/career-reboot-armor" target="_blank" class="text-zinc-300 hover:text-white flex items-center gap-1">Repo &rarr;</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-subtle">
+      <!-- Project 6: github-ai-studio -->
+      <div class="glass-panel p-5 rounded-xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-zinc-800 text-purple-400 border border-zinc-700">STUDIO PORTAL</span>
+            <span class="text-xs font-mono text-zinc-400">v1.0.0</span>
+          </div>
+          <h3 class="text-base font-bold text-white">github-ai-studio</h3>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
+            Central repository hub and landing portal for Existential Cloud AI Studio. Orchestrates documentation, repository federation, and portfolio showcases.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-subtle flex items-center justify-between text-xs font-mono">
+          <span class="text-zinc-500">Static Portal • GitHub Pages</span>
+          <a href="https://github.com/VanSchulist/github-ai-studio" target="_blank" class="text-zinc-300 hover:text-white flex items-center gap-1">Repo &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW 8: FREQUENTLY ASKED QUESTIONS & TROUBLESHOOTING                     -->
+  <!-- ========================================================================= -->
+  <main id="view-faq" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <div class="max-w-3xl mb-8">
       <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="faq.tag">Frequently Asked Questions</span>
       <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="faq.title">Everything you need to know about mcp-mesh</h2>
@@ -583,11 +992,39 @@
           mcp-mesh features built-in isolated circuit breakers. If an upstream server hangs or fails, mcp-mesh safely returns a graceful JSON-RPC error without freezing your host IDE or agent session.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-subtle bg-surface/50 py-10">
+      <div class="glass-panel p-5 rounded-xl">
+        <h3 class="text-sm font-semibold text-white" data-i18n="faq.q5">How are Windows and Unix process signals handled?</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="faq.a5">
+          On POSIX systems, mcp-mesh issues SIGTERM followed by SIGKILL on timeout. On Windows, it uses taskkill /F /T to terminate the entire process tree including spawned child shells, preventing orphaned background zombie processes.
+        </p>
+      </div>
+
+      <div class="glass-panel p-5 rounded-xl">
+        <h3 class="text-sm font-semibold text-white" data-i18n="faq.q6">How is the 94.6% token reduction measured?</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="faq.a6">
+          Empirical benchmarks in mcp-mesh-eval measure naive schema injection (10 servers x 6 tools = 60 tools x ~163 tokens = 9,790 tokens) versus mcp-mesh meta-tool schemas (4 tools = 527 tokens total), yielding exactly 94.6% reduction.
+        </p>
+      </div>
+
+      <div class="glass-panel p-5 rounded-xl">
+        <h3 class="text-sm font-semibold text-white" data-i18n="faq.q7">Can mcp-mesh bridge stdio servers to SSE / HTTP clients?</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="faq.a7">
+          Yes. mcp-mesh supports bidirectional protocol bridging: stdio client to stdio server, stdio client to SSE server, or SSE client to stdio server with timing-safe Bearer authentication.
+        </p>
+      </div>
+
+      <div class="glass-panel p-5 rounded-xl">
+        <h3 class="text-sm font-semibold text-white" data-i18n="faq.q8">What is the open source license and commercial policy?</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed" data-i18n="faq.a8">
+          All core repositories under Existential Cloud AI Studio are published under the MIT License and contain zero external runtime dependencies. They are free for personal, commercial, and enterprise deployment.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="border-t border-subtle bg-surface/50 py-10 mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
       <div>
         <span data-i18n="footer.engineeredBy">Engineered by</span>
