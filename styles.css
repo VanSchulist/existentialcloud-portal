@@ -68,7 +68,7 @@ code, pre, .dir-ltr-force {
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
 .glass-panel:hover {
@@ -83,7 +83,7 @@ code, pre, .dir-ltr-force {
 
 .tab-view.active {
   display: block;
-  animation: fadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeIn {
@@ -122,6 +122,78 @@ code, pre, .dir-ltr-force {
   color: #ffffff;
   border-bottom-color: var(--color-emerald);
   background-color: rgba(16, 185, 129, 0.06);
+}
+
+/* Keyboard Shortcut Badges */
+.kbd-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #1e2027;
+  color: #a1a1aa;
+  border: 1px solid #282b35;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Filter Pills */
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #a1a1aa;
+  background: #14161b;
+  border: 1px solid #1e2027;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-pill:hover {
+  color: #f4f4f5;
+  border-color: #282b35;
+}
+
+.filter-pill.active {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Benchmark Comparison Bars */
+.benchmark-track {
+  width: 100%;
+  height: 12px;
+  border-radius: 9999px;
+  background: #18191f;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #22242a;
+}
+
+.benchmark-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive Architecture Nodes */
+.arch-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.arch-card:hover {
+  border-color: var(--color-emerald);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.08);
 }
 
 /* Range Input Styling */
@@ -203,4 +275,33 @@ pre code {
 
 .log-line:hover {
   background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Modal Backdrops & Dialogs */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: modalFadeIn 0.15s ease-out;
+}
+
+.modal-dialog {
+  background-color: #111215;
+  border: 1px solid #282b35;
+  border-radius: 12px;
+  max-width: 540px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
 }

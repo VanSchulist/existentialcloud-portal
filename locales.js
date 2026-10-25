@@ -72,6 +72,15 @@ const LOCALES = {
       prewarmTitle: "Predictive Pre-Warming Engine",
       prewarmDesc: "Searching for a tool triggers an asynchronous background spawn of the target downstream server before the LLM generates the invoke call, completely hiding cold-start latency."
     },
+    bench: {
+      tag: "Benchmark Verification",
+      title: "Turn-0 Token Footprint & Latency Impact",
+      desc: "Empirical benchmark data from mcp-mesh-eval across 60 connected enterprise tools and frontier models.",
+      naive: "Naive Static Injection",
+      mesh: "mcp-mesh Gateway",
+      ttft: "Time-To-First-Token (TTFT)",
+      ttftDesc: "Prompt pre-fill latency reduction achieved by dropping schema context from 9,790 to 527 tokens."
+    },
     simulator: {
       tag: "Interactive Lab",
       title: "Simulate Your Token & Dollar Savings",
@@ -135,6 +144,10 @@ const LOCALES = {
       title: "Real-Time Telemetry & Topology Stream",
       desc: "Why was 127.0.0.1:8765 previously shown? When running locally, mcp-mesh-ui binds an SSE event stream and HTTP visualizer to http://127.0.0.1:8765. Below is an interactive client simulation, plus instructions to connect your local daemon.",
       simStreamTitle: "Interactive Telemetry Event Feed (In-Browser Simulation)",
+      statusLabel: "GATEWAY STATUS",
+      activePipes: "Supervised Reader Pipes",
+      p95Latency: "P95 Dispatch Latency",
+      totalSaved: "Cumulative Tokens Saved",
       pauseBtn: "Pause Stream",
       resumeBtn: "Resume Stream",
       clearBtn: "Clear Feed",
@@ -168,6 +181,20 @@ const LOCALES = {
       a7: "Yes. mcp-mesh supports bidirectional protocol bridging: stdio client to stdio server, stdio client to SSE server, or SSE client to stdio server with timing-safe Bearer authentication.",
       q8: "What is the open source license and commercial policy?",
       a8: "All core repositories under Existential Cloud AI Studio are published under the MIT License and contain zero external runtime dependencies. They are free for personal, commercial, and enterprise deployment."
+    },
+    modal: {
+      title: "Keyboard Shortcuts",
+      desc: "Navigate the portal like a power engineer.",
+      tabsTitle: "Switch View Tabs",
+      actionTitle: "Interactive Actions",
+      key1: "1-8: Switch tabs directly (Overview ... FAQ)",
+      keySlash: "/: Focus BM25 Playground Search",
+      keyP: "p: Pause / Resume live telemetry stream",
+      keyC: "c: Clear live telemetry feed",
+      keyT: "t: Trigger simulated tool invocation",
+      keyQ: "?: Toggle this shortcuts guide",
+      keyEsc: "Esc: Close any active modal",
+      closeBtn: "Close Guide"
     },
     footer: {
       engineeredBy: "Engineered by",
@@ -246,6 +273,15 @@ const LOCALES = {
       prewarmTitle: "预测性预热引擎",
       prewarmDesc: "模型发起搜索工具的瞬间，网关即在后台异步拉起目标下游进程，在模型生成调用参数期间完成冷启动，彻底抹平延迟。"
     },
+    bench: {
+      tag: "基准测试验证",
+      title: "Turn-0 Token 消耗与首字延迟基准对比",
+      desc: "来自 mcp-mesh-eval 在 60 个真实企业级工具和前沿大模型上的实测基准对比数据。",
+      naive: "原生静态注入",
+      mesh: "mcp-mesh 动态网关",
+      ttft: "首字出字延迟 (TTFT)",
+      ttftDesc: "提示词 Schema 上下文从 9,790 降低至 527 Tokens 所取得的 Prompt Pre-fill 延迟下降效果。"
+    },
     simulator: {
       tag: "交互实验室",
       title: "Token 消耗与成本节省模拟器",
@@ -309,6 +345,10 @@ const LOCALES = {
       title: "实时遥测拓扑与调用流",
       desc: "为什么之前显示 127.0.0.1:8765？在本地运行时，mcp-mesh-ui 将 SSE 事件流与 Web 监控面板绑定到 http://127.0.0.1:8765。下方的交互式监控流为浏览器端实时仿真，并提供了本地服务的连接指南。",
       simStreamTitle: "交互式遥测事件流（前端实时仿真）",
+      statusLabel: "网关运行状态",
+      activePipes: "托管管道守护线程",
+      p95Latency: "P95 调度延迟",
+      totalSaved: "累计节省 Tokens",
       pauseBtn: "暂停流",
       resumeBtn: "恢复流",
       clearBtn: "清空日志",
@@ -342,6 +382,20 @@ const LOCALES = {
       a7: "支持。网关全面覆盖双向协议桥接：stdio 客户端转 stdio 服务、stdio 客户端转 SSE 服务、以及 SSE 客户端转 stdio 服务（带时序安全 Bearer 认证）。",
       q8: "项目的开源许可协议与商业化政策是什么？",
       a8: "Existential Cloud AI Studio 旗下的核心项目全部基于宽松的 MIT 许可证开源，全栈零商业闭源依赖，完全可供个人、商业公司和企业私有化部署免费使用。"
+    },
+    modal: {
+      title: "快捷键指南",
+      desc: "像高阶工程师一样快速键盘操控平台。",
+      tabsTitle: "切换视图标签",
+      actionTitle: "交互操作",
+      key1: "1-8: 直接切换视图（概览 ... 常见问题）",
+      keySlash: "/: 聚焦 BM25 工具搜索输入框",
+      keyP: "p: 暂停 / 恢复实时遥测流",
+      keyC: "c: 清空实时遥测日志",
+      keyT: "t: 触发单步模拟工具调用",
+      keyQ: "?: 打开或关闭快捷键指南",
+      keyEsc: "Esc: 关闭活动弹窗",
+      closeBtn: "关闭指南"
     },
     footer: {
       engineeredBy: "设计与工程实现由",
@@ -420,6 +474,15 @@ const LOCALES = {
       prewarmTitle: "Motor de Precalentamiento Predictivo",
       prewarmDesc: "Iniciar la búsqueda arranca el subproceso en segundo plano, ocultando por completo la latencia de arranque en frío."
     },
+    bench: {
+      tag: "Verificación de Benchmark",
+      title: "Consumo de Tokens y Latencia Inicial Turn-0",
+      desc: "Resultados empíricos de mcp-mesh-eval en 60 herramientas empresariales y modelos de frontera.",
+      naive: "Inyección Estática Ingenua",
+      mesh: "Pasarela mcp-mesh",
+      ttft: "Tiempo hasta el Primer Token (TTFT)",
+      ttftDesc: "Reducción de latencia lograda al reducir el contexto de 9,790 a 527 tokens."
+    },
     simulator: {
       tag: "Laboratorio Interactivo",
       title: "Simule su Ahorro de Tokens y Costes",
@@ -483,6 +546,10 @@ const LOCALES = {
       title: "Telemetría y Flujo de Topología en Vivo",
       desc: "¿Por qué 127.0.0.1:8765? Al ejecutarse localmente, mcp-mesh-ui enlaza un flujo SSE en http://127.0.0.1:8765. A continuación presentamos una simulación interactiva y la guía de conexión local.",
       simStreamTitle: "Flujo Interactivo de Eventos de Telemetría (Simulación en Navegador)",
+      statusLabel: "ESTADO PASARELA",
+      activePipes: "Tuberías Supervisadas",
+      p95Latency: "Latencia P95",
+      totalSaved: "Tokens Ahorrados",
       pauseBtn: "Pausar",
       resumeBtn: "Reanudar",
       clearBtn: "Limpiar",
@@ -516,6 +583,20 @@ const LOCALES = {
       a7: "Sí, admite puenteado bidireccional entre stdio y SSE con autenticación segura Bearer.",
       q8: "¿Cuál es la licencia de código abierto y política comercial?",
       a8: "Licencia MIT sin dependencias de terceros; libre para uso personal y empresarial."
+    },
+    modal: {
+      title: "Atajos de Teclado",
+      desc: "Navegue por el portal como un ingeniero profesional.",
+      tabsTitle: "Cambiar Vistas",
+      actionTitle: "Acciones Interactivas",
+      key1: "1-8: Cambiar vistas directamente (Visión general ... FAQ)",
+      keySlash: "/: Enfocar búsqueda de herramientas BM25",
+      keyP: "p: Pausar / Reanudar flujo de telemetría",
+      keyC: "c: Limpiar registros de telemetría",
+      keyT: "t: Simular llamada de herramienta",
+      keyQ: "?: Abrir / Cerrar esta guía de atajos",
+      keyEsc: "Esc: Cerrar cualquier ventana emergente",
+      closeBtn: "Cerrar Guía"
     },
     footer: {
       engineeredBy: "Diseñado por",
@@ -594,6 +675,15 @@ const LOCALES = {
       prewarmTitle: "Moteur de Préchauffage Prédictif",
       prewarmDesc: "La recherche déclenche le démarrage anticipé du sous-processus cible en arrière-plan."
     },
+    bench: {
+      tag: "Vérification des Benchmarks",
+      title: "Empreinte des Tokens et Latence Initiale Turn-0",
+      desc: "Données de benchmark empiriques issues de mcp-mesh-eval sur 60 outils connectés.",
+      naive: "Injection Statique Naïve",
+      mesh: "Passerelle mcp-mesh",
+      ttft: "Temps jusqu'au Premier Token (TTFT)",
+      ttftDesc: "Réduction de la latence de pré-remplissage du prompt grâce à la réduction de 9 790 à 527 tokens."
+    },
     simulator: {
       tag: "Laboratoire Interactif",
       title: "Simulez Vos Économies de Tokens et de Coûts",
@@ -657,6 +747,10 @@ const LOCALES = {
       title: "Télémétrie et Flux de Topologie en Direct",
       desc: "Pourquoi 127.0.0.1:8765 ? Lors d'une exécution locale, mcp-mesh-ui active un flux SSE sur http://127.0.0.1:8765. Vous trouverez ci-dessous une simulation interactive ainsi que les instructions de lancement local.",
       simStreamTitle: "Flux Interactif d'Événements de Télémétrie (Simulation Navigateur)",
+      statusLabel: "STATUT PASSERELLE",
+      activePipes: "Canaux Supervisés",
+      p95Latency: "Latence P95",
+      totalSaved: "Tokens Économisés",
       pauseBtn: "Mettre en Pause",
       resumeBtn: "Reprendre",
       clearBtn: "Effacer",
@@ -690,6 +784,20 @@ const LOCALES = {
       a7: "Oui, le pontage bidirectionnel stdio <-> SSE est entièrement pris en charge avec authentification Bearer sécurisée.",
       q8: "Quelle est la licence open source et la politique commerciale ?",
       a8: "Licence MIT libre et gratuite pour usage personnel ou commercial."
+    },
+    modal: {
+      title: "Raccourcis Clavier",
+      desc: "Naviguez comme un ingénieur senior.",
+      tabsTitle: "Changer de Vue",
+      actionTitle: "Actions Interactives",
+      key1: "1-8: Changer de vue directement (Aperçu ... FAQ)",
+      keySlash: "/: Activer la recherche d'outils BM25",
+      keyP: "p: Mettre en pause / Reprendre la télémétrie",
+      keyC: "c: Effacer le flux de télémétrie",
+      keyT: "t: Déclencher une invocation simulée",
+      keyQ: "?: Ouvrir / Fermer ce guide",
+      keyEsc: "Esc: Fermer toute boîte modale",
+      closeBtn: "Fermer le Guide"
     },
     footer: {
       engineeredBy: "Conçu par",
@@ -768,6 +876,15 @@ const LOCALES = {
       prewarmTitle: "Упреждающий Прогрев Процессов",
       prewarmDesc: "Поиск инструмента асинхронно запускает сервер в фоне до генерации вызова моделью, скрывая задержку запуска."
     },
+    bench: {
+      tag: "Бенчмарк-верификация",
+      title: "Объем токенов Turn-0 и начальная задержка",
+      desc: "Эмпирические данные mcp-mesh-eval по 60 инструментам и передовым нейросетям.",
+      naive: "Статическая инъекция",
+      mesh: "Шлюз mcp-mesh",
+      ttft: "Время до первого токена (TTFT)",
+      ttftDesc: "Ускорение префилла промпта за счет сокращения схемы с 9 790 до 527 токенов."
+    },
     simulator: {
       tag: "Интерактивная Лаборатория",
       title: "Симулятор Экономии Токенов и Бюджета",
@@ -831,6 +948,10 @@ const LOCALES = {
       title: "Телеметрия и Поток Топологии в Реальном Времени",
       desc: "Почему ранее отображался 127.0.0.1:8765? При локальном запуске mcp-mesh-ui запускает SSE-поток и панель на http://127.0.0.1:8765. Ниже представлена интерактивная симуляция и руководство по запуску локального демона.",
       simStreamTitle: "Интерактивный Поток Телеметрии (Симуляция в Браузере)",
+      statusLabel: "СТАТУС ШЛЮЗА",
+      activePipes: "Активные каналы",
+      p95Latency: "Задержка P95",
+      totalSaved: "Сэкономлено токенов",
       pauseBtn: "Пауза",
       resumeBtn: "Возобновить",
       clearBtn: "Очистить",
@@ -864,6 +985,20 @@ const LOCALES = {
       a7: "Да, поддерживается двунаправленная трансляция между stdio и SSE с безопасной Bearer-аутентификацией.",
       q8: "Каковы условия лицензирования и коммерческого использования?",
       a8: "Все проекты лицензированы под MIT и не содержат закрытых библиотек. Разрешено свободное коммерческое использование."
+    },
+    modal: {
+      title: "Горячие клавиши",
+      desc: "Навигация для опытных инженеров.",
+      tabsTitle: "Переключение вкладок",
+      actionTitle: "Действия",
+      key1: "1-8: Прямой переход по вкладкам (Обзор ... Вопросы)",
+      keySlash: "/: Фокус на поиске инструментов BM25",
+      keyP: "p: Пауза / Возобновление телеметрии",
+      keyC: "c: Очистить журнал телеметрии",
+      keyT: "t: Тестовый запуск инструмента",
+      keyQ: "?: Показать / Скрыть это окно",
+      keyEsc: "Esc: Закрыть любое модальное окно",
+      closeBtn: "Закрыть окно"
     },
     footer: {
       engineeredBy: "Разработано",
@@ -942,6 +1077,15 @@ const LOCALES = {
       prewarmTitle: "محرك التسخين الاستباقي",
       prewarmDesc: "مجرد بدء البحث عن أداة يطلق الخادم المستهدف في الخلفية استباقياً لإنهاء الإقلاع البارد قبل استدعاء الأداة."
     },
+    bench: {
+      tag: "التحقق المعياري",
+      title: "استهلاك الرموز في البداية وزمن الاستجابة الأولي",
+      desc: "نتائج معيارية حقيقية من mcp-mesh-eval عبر 60 أداة متصلة ونماذج رائدة.",
+      naive: "الحقن الثابت التقليدي",
+      mesh: "بوابة mcp-mesh",
+      ttft: "زمن إخراج أول رمز (TTFT)",
+      ttftDesc: "تقليص زمن الاستجابة الأولي عبر خفض حجم المخططات من 9,790 إلى 527 رمزاً."
+    },
     simulator: {
       tag: "المختبر التفاعلي",
       title: "محاكي توفير الرموز والتكلفة المالية",
@@ -1005,6 +1149,10 @@ const LOCALES = {
       title: "تدفق القياس والبيانات في الوقت الفعلي",
       desc: "لماذا كان يظهر الرابط 127.0.0.1:8765 سابقاً؟ عند التشغيل محلياً، تقوم واجهة mcp-mesh-ui بفتح بث SSE ولوحة تحكم عبر http://127.0.0.1:8765. في الأسفل محاكاة تفاعلية مباشرة داخل المتصفح، مع إرشادات تشغيل الخادم المحلي على جهازك.",
       simStreamTitle: "بث أحداث المراقبة التفاعلي (محاكاة داخل المتصفح)",
+      statusLabel: "حالة البوابة",
+      activePipes: "القنوات المراقبة",
+      p95Latency: "زمن الاستجابة P95",
+      totalSaved: "إجمالي الرموز الموفرة",
       pauseBtn: "إيقاف مؤقت",
       resumeBtn: "استئناف البث",
       clearBtn: "مسح السجل",
@@ -1038,6 +1186,20 @@ const LOCALES = {
       a7: "نعم، يدعم التحويل ثنائي الاتجاه بالكامل بين بروتوكولات stdio و SSE مع التحقق الآمن من مفاتيح Bearer.",
       q8: "ما هي رخصة المشروع وسياسة الاستخدام التجاري؟",
       a8: "كافة المشاريع منشورة تحت رخصة MIT الحرة ومجانية تماماً للاستخدام الشخصي والتجاري والمؤسسي."
+    },
+    modal: {
+      title: "اختصارات لوحة المفاتيح",
+      desc: "تنقل في البوابة كمهندس محترف.",
+      tabsTitle: "تبديل الشاشات",
+      actionTitle: "العمليات التفاعلية",
+      key1: "1-8: التبديل المباشر بين الشاشات (نظرة عامة ... الأسئلة)",
+      keySlash: "/: التركيز على شريط بحث BM25",
+      keyP: "p: إيقاف / استئناف بث المراقبة",
+      keyC: "c: مسح سجل المراقبة اللحظي",
+      keyT: "t: محاكاة استدعاء أداة برمجية",
+      keyQ: "?: إظهار / إخفاء دليل الاختصارات",
+      keyEsc: "Esc: إغلاق أي نافذة منبثقة",
+      closeBtn: "إغلاق الدليل"
     },
     footer: {
       engineeredBy: "هندسة وتطوير",

@@ -53,20 +53,50 @@
         </a>
       </div>
 
-      <!-- Desktop Tab Bar (SPA View Switcher) -->
+      <!-- Desktop Tab Bar (SPA View Switcher with Keyboard Badges) -->
       <nav class="hidden xl:flex items-center gap-1 text-xs font-medium overflow-x-auto py-1">
-        <button data-tab-target="overview" data-i18n="nav.overview" class="nav-tab-btn active border-b-2 border-emerald-400 text-white">Overview</button>
-        <button data-tab-target="architecture" data-i18n="nav.architecture" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Architecture</button>
-        <button data-tab-target="simulator" data-i18n="nav.simulator" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Calculator &amp; Lab</button>
-        <button data-tab-target="quickstart" data-i18n="nav.quickstart" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Client Setup</button>
-        <button data-tab-target="security" data-i18n="nav.security" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Security &amp; Tests</button>
-        <button data-tab-target="observability" data-i18n="nav.observability" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Live Telemetry</button>
-        <button data-tab-target="ecosystem" data-i18n="nav.ecosystem" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">Ecosystem</button>
-        <button data-tab-target="faq" data-i18n="nav.faq" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">FAQ</button>
+        <button data-tab-target="overview" class="nav-tab-btn active border-b-2 border-emerald-400 text-white">
+          <span data-i18n="nav.overview">Overview</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">1</span>
+        </button>
+        <button data-tab-target="architecture" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">
+          <span data-i18n="nav.architecture">Architecture</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">2</span>
+        </button>
+        <button data-tab-target="simulator" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">
+          <span data-i18n="nav.simulator">Calculator &amp; Lab</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">3</span>
+        </button>
+        <button data-tab-target="quickstart" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">
+          <span data-i18n="nav.quickstart">Client Setup</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">4</span>
+        </button>
+        <button data-tab-target="security" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">
+          <span data-i18n="nav.security">Security &amp; Tests</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">5</span>
+        </button>
+        <button data-tab-target="observability" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">
+          <span data-i18n="nav.observability">Live Telemetry</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">6</span>
+        </button>
+        <button data-tab-target="ecosystem" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">
+          <span data-i18n="nav.ecosystem">Ecosystem</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">7</span>
+        </button>
+        <button data-tab-target="faq" class="nav-tab-btn border-b-2 border-transparent text-zinc-400">
+          <span data-i18n="nav.faq">FAQ</span>
+          <span class="kbd-badge ml-1 hidden 2xl:inline">8</span>
+        </button>
       </nav>
 
-      <!-- Right Controls: UN Languages & GitHub Stars -->
+      <!-- Right Controls: Keyboard Guide, UN Languages, GitHub Stars -->
       <div class="flex items-center gap-2.5 shrink-0">
+        
+        <!-- Keyboard Shortcuts Trigger Button -->
+        <button id="btn-open-shortcuts" title="Keyboard Shortcuts (?)" class="hidden md:inline-flex items-center justify-center w-7 h-7 rounded border border-subtle bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 transition-colors font-mono text-xs">
+          ?
+        </button>
+
         <!-- UN 6-Language Selector Dropdown -->
         <div class="flex items-center gap-1.5 border border-subtle bg-zinc-900/80 rounded-md px-2 py-1 text-xs">
           <span class="text-zinc-400 select-none text-xs">🌐</span>
@@ -502,6 +532,51 @@
           </div>
         </div>
 
+        <!-- Dynamic Visual Benchmark Bars Comparison -->
+        <div class="bg-surface border border-subtle p-5 rounded-xl shadow-xl">
+          <div class="flex items-center justify-between mb-3 border-b border-subtle pb-2">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-300" data-i18n="bench.title">Turn-0 Token &amp; Latency Impact Benchmark</span>
+            <span class="text-[11px] font-mono text-emerald-400">mcp-mesh-eval</span>
+          </div>
+
+          <!-- Token Bar: Static vs Mesh -->
+          <div class="space-y-3 text-xs font-mono">
+            <div>
+              <div class="flex justify-between text-zinc-400 mb-1">
+                <span data-i18n="bench.naive">Naive Static Injection</span>
+                <span id="bench-val-naive-tokens" class="text-rose-400 font-bold">9,790 tokens</span>
+              </div>
+              <div class="benchmark-track">
+                <div id="bench-bar-naive-tokens" class="benchmark-fill bg-rose-500" style="width: 100%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-zinc-400 mb-1">
+                <span data-i18n="bench.mesh">mcp-mesh Gateway</span>
+                <span id="bench-val-mesh-tokens" class="text-emerald-400 font-bold">527 tokens</span>
+              </div>
+              <div class="benchmark-track">
+                <div id="bench-bar-mesh-tokens" class="benchmark-fill bg-emerald-400" style="width: 5.4%;"></div>
+              </div>
+            </div>
+
+            <!-- TTFT Latency Comparison Card -->
+            <div class="mt-4 pt-3 border-t border-subtle grid grid-cols-2 gap-3 text-center">
+              <div class="p-2.5 rounded bg-zinc-900/60 border border-subtle">
+                <div class="text-[11px] text-zinc-400" data-i18n="bench.ttft">Time-To-First-Token (TTFT)</div>
+                <div class="text-base font-bold text-rose-400 mt-0.5">1,840 ms</div>
+                <div class="text-[10px] text-zinc-500">Static Injection</div>
+              </div>
+              <div class="p-2.5 rounded bg-zinc-900/60 border border-emerald-500/20">
+                <div class="text-[11px] text-emerald-400">74.7% Faster TTFT</div>
+                <div class="text-base font-bold text-emerald-400 mt-0.5">465 ms</div>
+                <div class="text-[10px] text-zinc-500">With mcp-mesh Gateway</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- CLI Stats Snippet -->
         <div class="bg-input border border-subtle p-3 rounded-lg flex items-center justify-between font-mono text-xs dir-ltr-force">
           <div class="flex items-center gap-2 overflow-x-auto text-zinc-300">
@@ -518,13 +593,16 @@
     <!-- BM25 Tool Search & Routing Playground -->
     <div class="mt-16 pt-12 border-t border-subtle">
       <div class="max-w-3xl mb-6">
-        <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="simulator.playgroundTitle">Interactive Tool Routing &amp; BM25 Playground</span>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono uppercase tracking-wider text-sky-400" data-i18n="simulator.playgroundTitle">Interactive Tool Routing &amp; BM25 Playground</span>
+          <span class="kbd-badge">/</span>
+        </div>
         <h3 class="text-xl font-bold text-white mt-1" data-i18n="simulator.playgroundDesc">Test natural language query routing across simulated upstream servers in real time.</h3>
       </div>
 
       <div class="bg-surface border border-subtle rounded-xl p-5 shadow-xl">
         <div class="mb-4">
-          <input type="text" id="input-playground-query" data-i18n-placeholder="simulator.playgroundPlaceholder" placeholder="Type tool search query, e.g. git commit, postgres query, audit job..." class="w-full bg-input border border-subtle rounded-lg px-4 py-2.5 text-xs sm:text-sm font-mono text-zinc-200 focus:outline-none focus:border-emerald-400 transition-colors">
+          <input type="text" id="input-playground-query" data-i18n-placeholder="simulator.playgroundPlaceholder" placeholder="Type tool search query, e.g. git commit, postgres query, audit job... (Press / to focus)" class="w-full bg-input border border-subtle rounded-lg px-4 py-2.5 text-xs sm:text-sm font-mono text-zinc-200 focus:outline-none focus:border-emerald-400 transition-colors">
         </div>
 
         <div id="playground-results" class="space-y-2">
@@ -768,22 +846,52 @@
       </p>
     </div>
 
+    <!-- Live Telemetry Status Readout Bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 font-mono text-xs">
+      <div class="glass-panel p-3 rounded-lg">
+        <div class="text-[10px] text-zinc-500 uppercase tracking-wider" data-i18n="telemetry.statusLabel">GATEWAY STATUS</div>
+        <div class="flex items-center gap-1.5 mt-1 text-emerald-400 font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>SUPERVISED</span>
+        </div>
+      </div>
+      <div class="glass-panel p-3 rounded-lg">
+        <div class="text-[10px] text-zinc-500 uppercase tracking-wider" data-i18n="telemetry.activePipes">Supervised Reader Pipes</div>
+        <div class="text-zinc-200 font-bold mt-1">3 Active (50-line ring)</div>
+      </div>
+      <div class="glass-panel p-3 rounded-lg">
+        <div class="text-[10px] text-zinc-500 uppercase tracking-wider" data-i18n="telemetry.p95Latency">P95 Dispatch Latency</div>
+        <div class="text-sky-400 font-bold mt-1">0.84 ms</div>
+      </div>
+      <div class="glass-panel p-3 rounded-lg">
+        <div class="text-[10px] text-zinc-500 uppercase tracking-wider" data-i18n="telemetry.totalSaved">Cumulative Tokens Saved</div>
+        <div id="stat-accumulated-saved" class="text-emerald-400 font-bold mt-1">68,420</div>
+      </div>
+    </div>
+
     <!-- Live In-Browser Telemetry Stream Simulation -->
     <div class="bg-surface border border-subtle rounded-xl p-5 shadow-xl">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-subtle">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-xs font-mono font-bold text-white uppercase tracking-wider" data-i18n="telemetry.simStreamTitle">Interactive Telemetry Event Feed (In-Browser Simulation)</span>
+        
+        <!-- Filter Pills -->
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs font-mono text-zinc-500 mr-1">Filter:</span>
+          <button class="filter-pill active" data-filter="ALL">ALL</button>
+          <button class="filter-pill" data-filter="SEARCH">SEARCH</button>
+          <button class="filter-pill" data-filter="PREWARM">PREWARM</button>
+          <button class="filter-pill" data-filter="INVOKE">INVOKE</button>
         </div>
+
+        <!-- Stream Action Buttons -->
         <div class="flex items-center gap-2 text-xs font-mono">
           <button id="btn-stream-toggle" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-subtle transition-colors" data-i18n="telemetry.pauseBtn">
-            Pause Stream
+            Pause Stream (p)
           </button>
           <button id="btn-stream-clear" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 border border-subtle transition-colors" data-i18n="telemetry.clearBtn">
-            Clear Feed
+            Clear Feed (c)
           </button>
           <button id="btn-stream-trigger" class="px-2.5 py-1 rounded bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/30 transition-colors" data-i18n="telemetry.triggerBtn">
-            Simulate Invocations
+            Simulate (t)
           </button>
         </div>
       </div>
@@ -1041,6 +1149,55 @@
       </div>
     </div>
   </footer>
+
+  <!-- ========================================================================= -->
+  <!-- KEYBOARD SHORTCUTS MODAL                                                  -->
+  <!-- ========================================================================= -->
+  <div id="modal-shortcuts" class="modal-overlay hidden">
+    <div class="modal-dialog p-6 border border-subtle bg-surface">
+      <div class="flex items-center justify-between pb-3 border-b border-subtle">
+        <div>
+          <h3 class="text-base font-bold text-white" data-i18n="modal.title">Keyboard Shortcuts</h3>
+          <p class="text-xs text-zinc-400 mt-0.5" data-i18n="modal.desc">Navigate the portal like a power engineer.</p>
+        </div>
+        <button id="btn-close-shortcuts" class="text-zinc-400 hover:text-white text-lg font-mono">&times;</button>
+      </div>
+
+      <div class="mt-4 space-y-4 text-xs font-mono">
+        <div>
+          <div class="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-2" data-i18n="modal.tabsTitle">Switch View Tabs</div>
+          <div class="grid grid-cols-2 gap-2 text-zinc-300">
+            <div class="flex items-center gap-2"><span class="kbd-badge">1</span> <span>Overview</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">2</span> <span>Architecture</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">3</span> <span>Calculator &amp; Lab</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">4</span> <span>Client Setup</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">5</span> <span>Security &amp; Tests</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">6</span> <span>Live Telemetry</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">7</span> <span>Ecosystem</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">8</span> <span>FAQ</span></div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-subtle">
+          <div class="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-2" data-i18n="modal.actionTitle">Interactive Actions</div>
+          <div class="space-y-1.5 text-zinc-300">
+            <div class="flex items-center gap-2"><span class="kbd-badge">/</span> <span data-i18n="modal.keySlash">Focus BM25 Playground Search</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">p</span> <span data-i18n="modal.keyP">Pause / Resume live telemetry stream</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">c</span> <span data-i18n="modal.keyC">Clear live telemetry feed</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">t</span> <span data-i18n="modal.keyT">Trigger simulated tool invocation</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">?</span> <span data-i18n="modal.keyQ">Toggle this shortcuts guide</span></div>
+            <div class="flex items-center gap-2"><span class="kbd-badge">Esc</span> <span data-i18n="modal.keyEsc">Close active modal</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-3 border-t border-subtle flex justify-end">
+        <button onclick="document.getElementById('modal-shortcuts').classList.add('hidden')" class="px-4 py-1.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-mono transition-colors" data-i18n="modal.closeBtn">
+          Close Guide
+        </button>
+      </div>
+    </div>
+  </div>
 
   <script src="locales.js"></script>
   <script src="app.js"></script>

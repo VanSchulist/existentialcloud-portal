@@ -1,13 +1,13 @@
 /**
  * Existential Cloud Official Portal (www.existentialcloud.ccwu.cc)
- * High-performance SPA controller:
- * - Tab-based multi-view routing with URL hash synchronization
+ * Premier Developer Experience Controller:
+ * - Keyboard-driven power navigation (1-8 view switching, '/', 'p', 'c', 't', '?', 'Esc')
+ * - Interactive benchmark visualizer synchronized with server/tool sliders
+ * - Live telemetry stream with real-time token accumulation counters & event filters
+ * - BM25 tool routing playground with sub-millisecond ranking
  * - UN 6-Language i18n engine with complete RTL support
- * - Token & dollar savings simulator
- * - Interactive BM25 tool routing playground
- * - Real-time telemetry event stream simulator & localhost probe
- * - Multi-IDE client configuration switcher
- * - GitHub metrics loader
+ * - Localhost daemon probe and status checker
+ * - IDE client configuration switcher
  */
 
 // Model Pricing (Input cost per 1M tokens in USD as of 2026)
@@ -106,6 +106,8 @@ const VALID_VIEWS = [
 
 let streamInterval = null;
 let streamIsRunning = true;
+let currentTelemetryFilter = "ALL";
+let totalAccumulatedTokens = 68420;
 
 document.addEventListener("DOMContentLoaded", () => {
   initI18n();
@@ -115,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTelemetrySimulator();
   initCodeTabs();
   initCopyButtons();
+  initKeyboardShortcuts();
   fetchGitHubMetrics();
 });
 
@@ -272,7 +275,7 @@ function initViewRouter() {
 }
 
 /* -------------------------------------------------------------
- * 3. Interactive Token Savings Simulator
+ * 3. Interactive Token Savings Simulator & Dynamic Benchmark Visualizer
  * ----------------------------------------------------------- */
 function initTokenSimulator() {
   const serversInput = document.getElementById("input-servers");
@@ -290,6 +293,12 @@ function initTokenSimulator() {
   const outSavedPct = document.getElementById("out-saved-pct");
   const outMonthlyCost = document.getElementById("out-monthly-cost");
   const outTotalTools = document.getElementById("out-total-tools");
+
+  // Visual Benchmark Fill Bars
+  const barNaiveTokens = document.getElementById("bench-bar-naive-tokens");
+  const barMeshTokens = document.getElementById("bench-bar-mesh-tokens");
+  const labelNaiveTokens = document.getElementById("bench-val-naive-tokens");
+  const labelMeshTokens = document.getElementById("bench-val-mesh-tokens");
 
   if (!serversInput || !toolsInput || !modelSelect || !turnsInput) return;
 
@@ -323,6 +332,18 @@ function initTokenSimulator() {
     if (outSavedTokens) outSavedTokens.textContent = savedPerTurn.toLocaleString();
     if (outSavedPct) outSavedPct.textContent = `${pct}%`;
     if (outMonthlyCost) outMonthlyCost.textContent = `$${dollarSaved}`;
+
+    // Update Benchmark Visualization Bars
+    if (labelNaiveTokens) labelNaiveTokens.textContent = `${rawTokens.toLocaleString()} tokens`;
+    if (labelMeshTokens) labelMeshTokens.textContent = `${meshTokens.toLocaleString()} tokens`;
+
+    if (barNaiveTokens && barMeshTokens) {
+      const maxScale = Math.max(rawTokens, 10000);
+      const naiveWidth = Math.min(100, Math.round((rawTokens / maxScale) * 100));
+      const meshWidth = Math.max(3, Math.round((meshTokens / maxScale) * 100));
+      barNaiveTokens.style.width = `${naiveWidth}%`;
+      barMeshTokens.style.width = `${meshWidth}%`;
+    }
   }
 
   window.__recalcSimulator = recalculate;
@@ -420,6 +441,7 @@ function initTelemetrySimulator() {
   const triggerBtn = document.getElementById("btn-stream-trigger");
   const checkStatusBtn = document.getElementById("btn-check-local-daemon");
   const daemonBadge = document.getElementById("local-daemon-status");
+  const totalSavedEl = document.getElementById("stat-accumulated-saved");
 
   if (!container) return;
 
@@ -441,6 +463,18 @@ function initTelemetrySimulator() {
     const evt = customEvt || sampleEvents[eventIdx % sampleEvents.length];
     eventIdx++;
 
+    // Check filter
+    if (currentTelemetryFilter !== "ALL" && evt.type !== currentTelemetryFilter) {
+      return;
+    }
+
+    if (evt.saved) {
+      totalAccumulatedTokens += parseInt(evt.saved.replace(/,/g, ""), 10) || 9263;
+      if (totalSavedEl) {
+        totalSavedEl.textContent = totalAccumulatedTokens.toLocaleString();
+      }
+    }
+
     const now = new Date();
     const timeStr = now.toTimeString().split(" ")[0] + "." + String(now.getMilliseconds()).padStart(3, "0");
 
@@ -450,19 +484,20 @@ function initTelemetrySimulator() {
 
     const line = document.createElement("div");
     line.className = "log-line text-zinc-300";
+    line.setAttribute("data-event-type", evt.type);
     line.innerHTML = `
-      <span class="text-zinc-600 select-none shrink-0">${timeStr}</span>
+      <span class="text-zinc-600 select-none shrink-0 font-mono">${timeStr}</span>
       <span class="border px-1 rounded text-[10px] font-mono shrink-0 ${tagColor}">${evt.type}</span>
-      <span class="text-zinc-200 font-semibold shrink-0">${evt.tool}</span>
-      <span class="text-zinc-400 flex-1 truncate">${evt.q ? `query="${evt.q}"` : evt.status || ""}</span>
-      ${evt.latency ? `<span class="text-sky-400 text-[11px] shrink-0">${evt.latency}</span>` : ""}
-      ${evt.saved ? `<span class="text-emerald-400 text-[11px] shrink-0">+${evt.saved} tkn saved</span>` : ""}
+      <span class="text-zinc-200 font-semibold shrink-0 font-mono">${evt.tool}</span>
+      <span class="text-zinc-400 flex-1 truncate font-mono">${evt.q ? `query="${evt.q}"` : evt.status || ""}</span>
+      ${evt.latency ? `<span class="text-sky-400 text-[11px] shrink-0 font-mono">${evt.latency}</span>` : ""}
+      ${evt.saved ? `<span class="text-emerald-400 text-[11px] shrink-0 font-mono">+${evt.saved} tkn saved</span>` : ""}
     `;
 
     container.appendChild(line);
 
-    // Keep max 40 lines
-    while (container.children.length > 40) {
+    // Keep max 50 lines
+    while (container.children.length > 50) {
       container.removeChild(container.firstChild);
     }
 
@@ -480,10 +515,30 @@ function initTelemetrySimulator() {
       if (streamIsRunning) {
         appendEvent();
       }
-    }, 2800);
+    }, 2600);
   }
 
   startStream();
+
+  // Filter Pill buttons
+  document.querySelectorAll(".filter-pill").forEach((pill) => {
+    pill.addEventListener("click", () => {
+      document.querySelectorAll(".filter-pill").forEach((p) => p.classList.remove("active"));
+      pill.classList.add("active");
+      currentTelemetryFilter = pill.getAttribute("data-filter") || "ALL";
+
+      // Filter visible items
+      const lines = container.querySelectorAll(".log-line");
+      lines.forEach((l) => {
+        const type = l.getAttribute("data-event-type");
+        if (currentTelemetryFilter === "ALL" || type === currentTelemetryFilter) {
+          l.style.display = "flex";
+        } else {
+          l.style.display = "none";
+        }
+      });
+    });
+  });
 
   if (pauseBtn) {
     pauseBtn.addEventListener("click", () => {
@@ -593,7 +648,96 @@ function initCopyButtons() {
 }
 
 /* -------------------------------------------------------------
- * 8. Live GitHub Repository Metrics
+ * 8. Keyboard Shortcuts Modal & Power Navigation
+ * ----------------------------------------------------------- */
+function initKeyboardShortcuts() {
+  const modal = document.getElementById("modal-shortcuts");
+  const openBtn = document.getElementById("btn-open-shortcuts");
+  const closeBtn = document.getElementById("btn-close-shortcuts");
+
+  function toggleModal(show) {
+    if (!modal) return;
+    if (show) {
+      modal.classList.remove("hidden");
+    } else {
+      modal.classList.add("hidden");
+    }
+  }
+
+  if (openBtn) openBtn.addEventListener("click", () => toggleModal(true));
+  if (closeBtn) closeBtn.addEventListener("click", () => toggleModal(false));
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) toggleModal(false);
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    // Ignore keystrokes when typing in inputs or selects
+    const tag = (e.target.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || tag === "select") {
+      if (e.key === "Escape") {
+        e.target.blur();
+      }
+      return;
+    }
+
+    // Number keys 1-8 for tabs
+    const num = parseInt(e.key, 10);
+    if (!isNaN(num) && num >= 1 && num <= VALID_VIEWS.length) {
+      e.preventDefault();
+      switchView(VALID_VIEWS[num - 1], true);
+      return;
+    }
+
+    if (e.key === "/") {
+      e.preventDefault();
+      switchView("simulator", true);
+      const queryInput = document.getElementById("input-playground-query");
+      if (queryInput) {
+        queryInput.focus();
+        queryInput.select();
+      }
+      return;
+    }
+
+    if (e.key === "?") {
+      e.preventDefault();
+      if (modal) {
+        const isHidden = modal.classList.contains("hidden");
+        toggleModal(isHidden);
+      }
+      return;
+    }
+
+    if (e.key === "Escape") {
+      toggleModal(false);
+      return;
+    }
+
+    if (e.key === "p" || e.key === "P") {
+      const pauseBtn = document.getElementById("btn-stream-toggle");
+      if (pauseBtn) pauseBtn.click();
+      return;
+    }
+
+    if (e.key === "c" || e.key === "C") {
+      const clearBtn = document.getElementById("btn-stream-clear");
+      if (clearBtn) clearBtn.click();
+      return;
+    }
+
+    if (e.key === "t" || e.key === "T") {
+      const triggerBtn = document.getElementById("btn-stream-trigger");
+      if (triggerBtn) triggerBtn.click();
+      return;
+    }
+  });
+}
+
+/* -------------------------------------------------------------
+ * 9. Live GitHub Repository Metrics
  * ----------------------------------------------------------- */
 async function fetchGitHubMetrics() {
   const repos = [
