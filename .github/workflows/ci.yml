@@ -1,0 +1,42 @@
+name: CI Portal Integrity & Syntax Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Portal Assets & Syntax
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate JavaScript Syntax
+        run: |
+          node --check app.js
+
+      - name: Verify Portal Assets & HTML Integrity
+        run: |
+          python3 -c "
+          import os
+          assert os.path.exists('index.html'), 'index.html missing'
+          assert os.path.exists('app.js'), 'app.js missing'
+          assert os.path.exists('styles.css'), 'styles.css missing'
+          with open('index.html', encoding='utf-8') as f:
+              html = f.read()
+              for req in ['out-mesh-tokens', 'input-servers', 'input-tools', 'out-saved-pct']:
+                  assert req in html, f'Missing required DOM ID in index.html: {req}'
+          print('Portal integrity validation passed.')
+          "
