@@ -3,43 +3,53 @@
  * Core interactive controller: Token savings simulator, tab switcher, GitHub API loader.
  */
 
-// Model Pricing (Input cost per 1M tokens in USD as of September 2026)
+// Model Pricing (Input cost per 1M tokens in USD as of 2026)
 const MODEL_PRICING = {
-  "gpt-6-astra": { name: "GPT-6 Astra", costPerM: 10.00 },
-  "claude-55-sonnet": { name: "Claude Sonnet 5.5", costPerM: 2.00 },
-  "gpt-6-sol": { name: "GPT-6.1 Sol", costPerM: 2.00 },
-  "claude-55-opus": { name: "Claude Opus 5.5", costPerM: 12.00 },
-  "gemini-38-flash": { name: "Gemini 3.8 Flash", costPerM: 0.75 },
-  "deepseek-v41-flash": { name: "DeepSeek-V4.1-Flash", costPerM: 0.15 },
+  "claude-35-sonnet": { name: "Claude 3.5 Sonnet / 3.7", costPerM: 3.00 },
+  "gpt-4o": { name: "GPT-4o", costPerM: 2.50 },
+  "claude-3-opus": { name: "Claude 3 Opus", costPerM: 15.00 },
+  "gemini-15-pro": { name: "Gemini 1.5 / 2.0 Pro", costPerM: 1.25 },
+  "gemini-15-flash": { name: "Gemini 1.5 / 2.0 Flash", costPerM: 0.15 },
+  "deepseek-v3": { name: "DeepSeek-V3", costPerM: 0.14 },
 };
 
-// Configuration Snippets
+// Configuration Snippets for Modern Agent Clients
 const CONFIG_SNIPPETS = {
-  claude: `{
+  claude: `// claude_desktop_config.json
+{
   "mcpServers": {
     "mcp-mesh": {
       "command": "python",
-      "args": ["-m", "mcp_mesh.cli", "run", "--config", "mcp_mesh.json"]
+      "args": ["-m", "mcp_mesh.cli", "run", "--federate"]
     }
   }
 }`,
-  cursor: `{
+  cursor: `// ~/.cursor/mcp.json
+{
   "mcpServers": {
     "mcp-mesh": {
       "command": "mcp-mesh",
-      "args": ["run", "--config", "\${workspaceFolder}/.mcp-mesh.json"]
+      "args": ["run", "--federate"]
     }
   }
 }`,
-  cli: `# 1. Clone repository
-git clone https://github.com/VanSchulist/mcp-mesh.git
-cd mcp-mesh
+  antigravity: `// ~/.gemini/config/mcp_config.json
+{
+  "mcpServers": {
+    "mcp-mesh": {
+      "command": "python",
+      "args": ["-m", "mcp_mesh.cli", "run", "--federate"]
+    }
+  }
+}`,
+  cli: `# Run instant zero-dependency gateway with auto-federation
+uvx mcp-mesh run --federate
 
-# 2. Run instant demonstration with 5 enterprise mock servers
-python main.py demo
+# Test natural language tool search across all workstations
+uvx mcp-mesh search "ghost job audit" --federate
 
-# 3. View live token savings report
-python main.py stats`,
+# View persistent SQLite token economy ledger
+uvx mcp-mesh stats --db`,
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -123,13 +133,10 @@ function initCodeTabs() {
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       tabs.forEach((t) => {
-        t.classList.remove("border-amber-500", "text-amber-400", "bg-amber-950/40");
-        t.classList.add("border-transparent", "text-stone-400");
+        t.classList.remove("active");
       });
 
-      tab.classList.add("border-amber-500", "text-amber-400", "bg-amber-950/40");
-      tab.classList.remove("border-transparent", "text-stone-400");
-
+      tab.classList.add("active");
       const target = tab.getAttribute("data-tab");
       if (CONFIG_SNIPPETS[target] && codeBlock) {
         codeBlock.textContent = CONFIG_SNIPPETS[target];
@@ -163,7 +170,7 @@ function initCopyButtons() {
       if (textToCopy) {
         navigator.clipboard.writeText(textToCopy).then(() => {
           const originalHTML = btn.innerHTML;
-          btn.innerHTML = `<span class="text-emerald-400 font-mono text-xs">Copied!</span>`;
+          btn.innerHTML = `<span style="color: #10b981; font-family: monospace; font-size: 11px;">Copied!</span>`;
           setTimeout(() => {
             btn.innerHTML = originalHTML;
           }, 2000);
@@ -179,9 +186,9 @@ function initCopyButtons() {
 async function fetchGitHubMetrics() {
   const repos = [
     { id: "mcp-mesh", repo: "VanSchulist/mcp-mesh" },
-    { id: "github-ai-studio", repo: "VanSchulist/github-ai-studio" },
+    { id: "mcp-mesh-ui", repo: "VanSchulist/mcp-mesh-ui" },
     { id: "ghost-job-hunter", repo: "VanSchulist/ghost-job-hunter" },
-    { id: "career-reboot-armor", repo: "VanSchulist/career-reboot-armor" },
+    { id: "github-ai-studio", repo: "VanSchulist/github-ai-studio" },
   ];
 
   for (const item of repos) {

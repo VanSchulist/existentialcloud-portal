@@ -1,69 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  /* Warm Editorial Aesthetic Palette */
-  --bg-primary: #12100d;
-  --bg-card: rgba(28, 23, 19, 0.78);
-  --border-warm: rgba(245, 158, 11, 0.18);
-  --border-glow: rgba(234, 88, 12, 0.35);
-  --accent-amber: #f59e0b;
-  --accent-orange: #ea580c;
-  --accent-gold: #fbbf24;
-  --text-cream: #faf5ee;
-  --text-muted: #a89f91;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, "SF Mono", monospace;
+
+  /* Modern Engineering Zinc Palette */
+  --bg-canvas: #09090b;
+  --bg-surface: #111215;
+  --bg-card: #14161b;
+  --bg-card-hover: #1a1d24;
+  --bg-input: #0d0e11;
+
+  --border-subtle: #1e2027;
+  --border-default: #282b35;
+  --border-focus: #3e4454;
+
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --color-emerald: #10b981;
+  --color-emerald-bg: rgba(16, 185, 129, 0.12);
+  --color-emerald-border: rgba(16, 185, 129, 0.25);
+
+  --color-sky: #0ea5e9;
+  --color-sky-bg: rgba(14, 165, 233, 0.12);
+  --color-sky-border: rgba(14, 165, 233, 0.25);
+
+  --color-amber: #f59e0b;
+  --color-amber-bg: rgba(245, 158, 11, 0.12);
+  --color-amber-border: rgba(245, 158, 11, 0.25);
+
+  --color-rose: #f43f5e;
+  --color-rose-bg: rgba(244, 63, 94, 0.12);
+  --color-rose-border: rgba(244, 63, 94, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-primary);
-  color: var(--text-cream);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 code, pre, .font-mono {
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
-/* Warm Cybernetic Grid Background */
+/* Subtle Subtle Grid (Ultra-clean, non-distracting) */
 .bg-grid {
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(245, 158, 11, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(245, 158, 11, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-/* Warm Glassmorphism Card */
+/* Grounded Surface Card (Clean 1px borders, zero blurry glowing gradients) */
 .glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-warm);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .glass-panel:hover {
-  border-color: var(--border-glow);
-  box-shadow: 0 12px 40px 0 rgba(234, 88, 12, 0.12);
+  border-color: var(--border-default);
+  background-color: var(--bg-card-hover);
 }
 
-/* Warm Ambient Radial Glows */
-.radial-glow-amber {
-  background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.14) 0%, transparent 70%);
-}
-
-.radial-glow-orange {
-  background: radial-gradient(circle at 50% 50%, rgba(234, 88, 12, 0.12) 0%, transparent 70%);
-}
-
-/* Warm Range Input Styling */
+/* Range Input Styling */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  background: #2a221b;
-  height: 8px;
+  background: #1e2027;
+  height: 6px;
   border-radius: 9999px;
   outline: none;
   cursor: pointer;
@@ -72,43 +92,74 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #f59e0b;
+  background: #f4f4f5;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
-  border: 2px solid #fffbeb;
-  transition: transform 0.12s ease, background-color 0.12s ease;
+  border: 2px solid #09090b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.12s ease;
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #f59e0b;
+  background: #f4f4f5;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
-  border: 2px solid #fffbeb;
-  transition: transform 0.12s ease, background-color 0.12s ease;
+  border: 2px solid #09090b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.12s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  background: #fbbf24;
+  transform: scale(1.15);
 }
 
-input[type="range"]::-moz-range-thumb:hover {
-  transform: scale(1.2);
-  background: #fbbf24;
+/* Code Preview Block */
+pre code {
+  color: #e4e4e7;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
-/* Warm Soft Pulse Keyframes */
-@keyframes softPulse {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.04); }
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fafafa;
+  color: #09090b;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.15s ease;
 }
 
-.animate-soft-pulse {
-  animation: softPulse 5s infinite ease-in-out;
+.btn-primary:hover {
+  background-color: #e4e4e7;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-default);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-card);
+  border-color: var(--border-focus);
 }
